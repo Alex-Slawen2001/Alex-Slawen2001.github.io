@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSC Copter — Главная</title>
+
+    <meta name="description" content="HSC Copter — профессиональные беспилотные решения и дроны">
+    <link rel="shortcut icon" href="/styles/images/hsc-favicon_all.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/css/styles.css">
+
+
+</head>
+<body>
+<header class="header">
+    <div class="container header-inner">
+
+        <div class="logo">
+            <a href="/">
+                <img style="width: 50%;" src="/styles/images/logo.png" alt="HSC Copter">
+            </a>
+        </div>
+
+        <nav class="nav" id="mobileNav">
+
+            <button class="nav-close" id="navClose" aria-label="Закрыть меню">
+                <span></span><span></span>
+            </button>
+
+            <a href="/" class="nav__link">Главная</a>
+            <a href="/pages/about.html" class="nav__link">О компании</a>
+            <a href="/pages/catalog.html" class="nav__link">Продукты</a>
+            <a href="/pages/news.html" class="nav__link">Новости</a>
+            <a href="/pages/modern.html" class="nav__link">Модернизация</a>
+            <a href="/pages/contacts.html" class="nav__link">Контакты</a>
+
+
+        </nav>
+
+        <div class="header__actions">
+            <a href="/pages/reg.html"
+               class="btn-primary nav-cta">
+                Регистрация
+            </a>
+
+            <button class="burger" id="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+</header>
+
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+        <div class="breadcrumbs">
+            Главная → Каталог → Запчасти для вертолетов
+        </div>
+        <h1>Каталог запчастей для вертолётов</h1>
+    </div>
+
+    <div class="catalog-layout">
+
+
+        <aside class="filters">
+
+            <h3>Фильтры</h3>
+
+            <div class="filter-group">
+                <label>Модель вертолёта</label>
+                <select>
+                    <option>Все модели</option>
+                    <option>Mi-8</option>
+                    <option>Mi-17</option>
+                    <option>Mi-26</option>
+                    <option>Ka-32</option>
+                    <option>Ansat</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Категория</label>
+                <select>
+                    <option>Все категории</option>
+                    <option>Двигатели</option>
+                    <option>Трансмиссия</option>
+                    <option>Лопасти</option>
+                    <option>Авиаоника</option>
+                    <option>Гидравлика</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Номер детали (SKU)</label>
+                <input type="text" placeholder="Введите артикул">
+            </div>
+
+            <div class="filter-group">
+                <label>Цена до</label>
+                <input type="number" placeholder="₽">
+            </div>
+
+        </aside>
+
+        <!-- ===== CATALOG ===== -->
+        <section>
+
+            <!-- Toolbar -->
+            <div class="catalog-toolbar">
+                <div>Найдено: <strong>124</strong></div>
+                <div class="sort">
+                    <select>
+                        <option>По умолчанию</option>
+                        <option>Цена ↑</option>
+                        <option>Цена ↓</option>
+                        <option>По популярности</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="catalog-grid">
+
+                <article class="product-card">
+                    <div class="product-image"><img class="img_product" src="/styles/images/reductor.jpg"></div>
+                    <div class="product-body">
+                        <div class="product-title">Редуктор главной передачи</div>
+                        <div class="product-sku">SKU: HSC-MI8-RGX01</div>
+                        <div class="product-attrs">
+                            Модель: Mi-8<br>
+                            Категория: Трансмиссия<br>
+                            Наличие: В наличии
+                        </div>
+                        <div class="product-price">₽ 1 450 000</div>
+                        <a class="btn-primary" style="text-decoration: none;color: white;text-align: center" href="/pages/detail/product.html">Посмотреть</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image"><img style="width: 70%;" class="img_product" src="/styles/images/lopast_vinta.png"></div>
+                    <div class="product-body">
+                        <div class="product-title">Лопасть несущего винта</div>
+                        <div class="product-sku">SKU: HSC-MI17-BLD02</div>
+                        <div class="product-attrs">
+                            Модель: Mi-17<br>
+                            Категория: Лопасти<br>
+                            Наличие: Под заказ
+                        </div>
+                        <div class="product-price">₽ 980 000</div>
+                        <a class="btn-primary" style="text-decoration: none;color: white;text-align: center" href="/pages/detail/product.html">Посмотреть</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image"><img class="img_product" src="/styles/images/block_avioniki.webp"></div>
+                    <div class="product-body">
+                        <div class="product-title">Блок авионики NAV-X4</div>
+                        <div class="product-sku">SKU: HSC-NAV-X4</div>
+                        <div class="product-attrs">
+                            Универсальный<br>
+                            Категория: Авионика<br>
+                            Наличие: В наличии
+                        </div>
+                        <div class="product-price">₽ 320 000</div>
+                        <a class="btn-primary" style="text-decoration: none;color: white;text-align: center" href="/pages/detail/product.html">Посмотреть</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image"><img style="height: 100%;" class="img_product" src="/styles/images/gidro.png"></div>
+                    <div class="product-body">
+                        <div class="product-title">Гидронасос HP-240</div>
+                        <div class="product-sku">SKU: HSC-HYD-240</div>
+                        <div class="product-attrs">
+                            Категория: Гидравлика<br>
+                            Наличие: В наличии
+                        </div>
+                        <div class="product-price">₽ 210 000</div>
+                        <a class="btn-primary" style="text-decoration: none;color: white;text-align: center" href="/pages/detail/product.html">Посмотреть</a>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="pagination">
+                <a href="#">←</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">→</a>
+            </div>
+
+        </section>
+
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container footer-grid">
+
+        <div class="footer-brand">
+            <strong class="footer-logo">HSC Copter</strong>
+            <p class="footer-desc">
+                Профессиональные беспилотные технологии и решения для промышленности
+            </p>
+        </div>
+
+        <div class="footer-nav">
+            <h4>Навигация</h4>
+            <a href="/">Главная</a>
+            <a href="/pages/catalog.html">Каталог</a>
+            <a href="/pages/news.html">Новости</a>
+            <a href="/pages/about.html">О компании</a>
+            <a href="/pages/document.html">Документация</a>
+            <a href="/pages/obuchenie.html">Обучение</a>
+        </div>
+
+        <div class="footer-contacts">
+            <h4>Контакты</h4>
+            <a href="mailto:info@hsc-copter.com">info@hsc-copter.com</a>
+            <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+            <span class="footer-note">Пн–Пт, 9:00–18:00</span>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 HSC Copter. Все права защищены
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const modal = document.getElementById('consultModal');
+
+            if (!modal) {
+                console.warn('consultModal not found');
+                return;
+            }
+            document.querySelectorAll('.js-open-consult').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            document.querySelectorAll('.js-close-consult').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            const refreshBtn = document.getElementById('refreshCaptcha');
+            const captchaImg = document.getElementById('captchaImage');
+
+            if (refreshBtn && captchaImg) {
+                refreshBtn.addEventListener('click', () => {
+                    captchaImg.src = '/ajax/captcha/image/' + Date.now();
+                });
+            }
+        });
+    </script>
+</footer>
+<div class="consult-modal" id="consultModal">
+
+    <div class="consult-overlay js-close-consult"></div>
+
+    <div class="consult-window">
+
+        <button class="consult-close js-close-consult">✕</button>
+
+        <h2 class="consult-title">
+            Запросить консультацию
+        </h2>
+
+        <p class="consult-subtitle">
+            Оставьте сообщение — мы свяжемся с вами в ближайшее время
+        </p>
+
+        <form action="/ajax/message/send"
+              method="POST"
+              id="consultForm">
+
+            <input type="hidden" name="Code" value="Mail.Question.Exchange">
+            <input type="hidden" name="IsValid" value="True">
+            <input type="hidden" name="IsNotAutor" value="False">
+            <input type="hidden" name="ReturnUrl" value="">
+            <input type="hidden" name="__RequestVerificationToken" value="YOUR_TOKEN_HERE">
+
+            <div class="consult-grid">
+
+                <div class="consult-field full">
+                    <textarea name="Message" placeholder="Введите ваше сообщение*" required></textarea>
+                </div>
+
+                <div class="consult-field">
+                    <input type="text" name="Name" placeholder="Ваше имя*" required>
+                </div>
+
+                <div class="consult-field">
+                    <input type="email" name="Email" placeholder="Ваш e-mail">
+                </div>
+
+                <div class="consult-field">
+                    <input type="tel" name="Phone" placeholder="Телефон">
+                </div>
+
+            </div>
+
+            <button type="submit" class="consult-submit">
+                Отправить запрос
+            </button>
+
+        </form>
+
+    </div>
+</div>
+<script src="/styles/js/script.js"></script>
+
+<script>
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('navOverlay');
+    const navClose = document.getElementById('navClose');
+
+    function closeMenu() {
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', closeMenu);
+    navClose.addEventListener('click', closeMenu);
+
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+
+</script>
+
+
+
+</body>
+</html>
