@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSC Copter — Главная</title>
+
+    <meta name="description" content="HSC Copter — профессиональные беспилотные решения и дроны">
+    <link rel="shortcut icon" href="/styles/images/hsc-favicon_all.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?php __DIR__?>/styles/css/styles.css">
+
+
+</head>
+<body>
+<header class="header">
+    <div class="container header-inner">
+
+        <div class="logo">
+            <a href="/">
+                <img style="width: 50%;" src="/styles/images/logo.png" alt="HSC Copter">
+            </a>
+        </div>
+
+        <nav class="nav" id="mobileNav">
+
+            <button class="nav-close" id="navClose" aria-label="Закрыть меню">
+                <span></span><span></span>
+            </button>
+
+            <a href="/" class="nav__link">Главная</a>
+            <a href="/pages/about.php" class="nav__link">О компании</a>
+            <a href="/pages/catalog.php" class="nav__link">Продукты</a>
+            <a href="/pages/news.php" class="nav__link">Новости</a>
+            <a href="/pages/modern.php" class="nav__link">Модернизация</a>
+            <a href="/pages/contacts.php" class="nav__link">Контакты</a>
+
+
+        </nav>
+
+        <div class="header__actions">
+            <a href="/pages/reg.php"
+               class="btn-primary nav-cta">
+                Регистрация
+            </a>
+
+            <button class="burger" id="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+</header>
+

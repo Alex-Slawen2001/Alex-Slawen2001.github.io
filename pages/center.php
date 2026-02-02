@@ -1,0 +1,673 @@
+<?php require_once __DIR__ .'/../blocks/header.php'?>
+    <style>
+        :root {
+            --bg-main: #121212;
+            --bg-secondary: #1E1E1E;
+            --surface: #2A2A2A;
+            --surface-hover: #343434;
+            --surface-dark: #1a1a1a;
+            --surface-blue: rgba(23, 97, 167, 0.15);
+            --surface-blue-hover: rgba(23, 97, 167, 0.25);
+            --surface-green: rgba(0, 198, 167, 0.1);
+
+            --text-main: #E0E0E0;
+            --text-secondary: #A0A0A0;
+            --text-muted: #a0a0a0;;
+
+            --primary: #4F8AFF;
+            --primary-dark: #3a7cff;
+            --accent: #00C6A7;
+            --accent-red: #FF4757;
+            --blue-accent: #1761A7;
+
+            --radius: 14px;
+            --radius-lg: 20px;
+            --radius-sm: 8px;
+            --transition: .3s ease;
+
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.3);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            background: var(--bg-main);
+            color: var(--text-main);
+            font-family: Inter, system-ui, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        .main-content {
+            padding: 40px 0 80px;
+            flex: 1;
+        }
+
+        .page-header {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .page-header__title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #fff;
+            background: #fff;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .view-toggle__btn {
+            padding: 14px 35px;
+            background: var(--surface);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .view-toggle__btn i {
+            font-size: 18px;
+        }
+
+        .view-toggle__btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(79, 138, 255, 0.3);
+        }
+
+        .view-toggle__btn:hover:not(.active) {
+            background: var(--surface-hover);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .training-center-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin: 0 auto;
+        }
+
+        .training-center-card {
+            background: linear-gradient(
+                    145deg,
+                    var(--surface) 0%,
+                    var(--surface-dark) 100%
+            );
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all var(--transition);
+        }
+
+        .training-center-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .training-center-card__content {
+            padding: 45px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .training-center-card__title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        .training-center-card__title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .training-center-card__title a:hover {
+            color: var(--primary);
+        }
+
+        .training-center-card__description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .training-center-card__description p {
+            margin-bottom: 20px;
+        }
+
+        .training-center-card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: rgba(79, 138, 255, 0.1);
+            color: var(--primary);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            transition: all var(--transition);
+            align-self: flex-start;
+            border: 1px solid rgba(79, 138, 255, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .training-center-card__link:hover {
+            background: rgba(79, 138, 255, 0.2);
+            color: #fff;
+            transform: translateX(5px);
+            border-color: var(--primary);
+        }
+
+        .training-center-card__link i {
+            font-size: 14px;
+            transition: transform var(--transition);
+        }
+
+        .training-center-card__link:hover i {
+            transform: translateX(3px);
+        }
+
+        .training-center-card__contacts {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-item__icon {
+            width: 28px;
+            height: 28px;
+            background: rgba(79, 138, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .contact-item__content {
+            flex: 1;
+        }
+
+        .contact-item__label {
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .contact-item__value {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .contact-item__value a {
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+
+        .contact-item__value a:hover {
+            color: var(--primary);
+        }
+
+        .site-footer {
+            background: var(--surface-dark);
+            padding: 50px 0 30px;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section__title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        .footer-link i {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .footer-contact {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius);
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-contact__title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact__title i {
+            color: var(--primary);
+        }
+
+        .footer-contact__item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .footer-contact__item:last-child {
+            margin-bottom: 0;
+        }
+
+        .footer-contact__icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(79, 138, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .footer-contact__text {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .footer-contact__text a {
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+
+        .footer-contact__text a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom__links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom__link {
+            color: var(--text-muted);
+            font-size: 13px;
+            transition: color var(--transition);
+        }
+
+        .footer-bottom__link:hover {
+            color: var(--primary);
+        }
+
+        .accessibility-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            transition: all var(--transition);
+        }
+
+        .accessibility-link:hover {
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        .accessibility-link i {
+            font-size: 14px;
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .main-content {
+                padding: 30px 0 60px;
+            }
+
+            .page-header__title {
+                font-size: 36px;
+                margin-bottom: 25px;
+            }
+
+            .training-center-card__content {
+                padding: 35px 30px;
+            }
+
+            .training-center-card__title {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header__title {
+                font-size: 32px;
+            }
+
+            .view-toggle {
+                flex-direction: column;
+                align-items: stretch;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .view-toggle__btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-bottom__links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header__title {
+                font-size: 28px;
+            }
+
+            .training-center-card__content {
+                padding: 30px 25px;
+            }
+
+            .training-center-card__title {
+                font-size: 22px;
+            }
+
+            .training-center-card__link {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-contact {
+                padding: 20px;
+            }
+
+            .view-toggle__btn {
+                padding: 12px 25px;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .contact-item__icon {
+                align-self: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .main-content {
+                padding: 20px 0 40px;
+            }
+
+            .training-center-card__content {
+                padding: 25px 20px;
+            }
+
+            .training-center-card__title {
+                font-size: 20px;
+            }
+        }
+
+        @keyframes skeleton-loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+
+    <body>
+
+    <div class="hsc-site-content">
+        <div class="container">
+            <div class="main-content">
+
+                <div class="page-header">
+                    <h1 class="page-header__title">Авиационные учебные центры</h1>
+
+                    <div class="view-toggle">
+                        <button class="view-toggle__btn active">
+                            Список
+                        </button>
+                        <a href="/#" class="view-toggle__btn">
+                             На карте
+                        </a>
+                    </div>
+                </div>
+
+                <div class="training-center-list">
+                    <div class="training-center-card">
+                        <div class="training-center-card__content">
+                            <h2 class="training-center-card__title">
+                                <a href="/training/center/item-9746548">
+                                    АУЦ Акционерного общества «Новосибирский авиаремонтный завод»
+                                </a>
+                            </h2>
+
+                            <div class="training-center-card__description">
+                                <p>Авиационный учебный центр АО «Новосибирский авиаремонтный завод» (АУЦ АО «НАРЗ») создан на базе единственного в РФ авиационного предприятия, выполняющего техническое обслуживание и ремонт всех типов и модификаций вертолетов марки «Ми».</p>
+                                <p>При разработке учебных программ и методических материалов использован более чем 75-ти летний опыт эксплуатации и ремонта авиационной техники.</p>
+                            </div>
+
+                            <a href="#" class="training-center-card__link">
+                                <span>Читать подробнее</span>
+                                <i>→</i>
+                            </a>
+
+                            <div class="training-center-card__contacts">
+                                <div class="contact-item">
+                                    <div class="contact-item__icon">
+                                        <i>📍</i>
+                                    </div>
+                                    <div class="contact-item__content">
+                                        <div class="contact-item__label">Адрес</div>
+                                        <div class="contact-item__value">
+                                            630123, Россия, г. Новосибирск, ул. Аэропорт 2/4
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact-item">
+                                    <div class="contact-item__icon">
+                                        <i>📞</i>
+                                    </div>
+                                    <div class="contact-item__content">
+                                        <div class="contact-item__label">Телефон</div>
+                                        <div class="contact-item__value">
+                                            +7 (383) 228-96-70, +7 (383) 228-96-78
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact-item">
+                                    <div class="contact-item__icon">
+                                        <i>📠</i>
+                                    </div>
+                                    <div class="contact-item__content">
+                                        <div class="contact-item__label">Факс</div>
+                                        <div class="contact-item__value">
+                                            +7 (383) 200-30-19
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact-item">
+                                    <div class="contact-item__icon">
+                                        <i>✉️</i>
+                                    </div>
+                                    <div class="contact-item__content">
+                                        <div class="contact-item__label">Email</div>
+                                        <div class="contact-item__value">
+                                            <a href="mailto:info@narp.ru">info@narp.ru</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewButtons = document.querySelectorAll('.view-toggle__btn');
+            viewButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    if (this.classList.contains('view-toggle__btn')) {
+                        viewButtons.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            const cards = document.querySelectorAll('.training-center-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if(targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+<?php require_once __DIR__ .'/../blocks/footer.php'?>

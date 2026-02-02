@@ -1,0 +1,154 @@
+<footer class="footer">
+    <div class="container footer-grid">
+
+        <div class="footer-brand">
+            <strong class="footer-logo">HSC Copter</strong>
+            <p class="footer-desc">
+                Профессиональные беспилотные технологии и решения для промышленности
+            </p>
+        </div>
+
+        <div class="footer-nav">
+            <h4>Навигация</h4>
+            <a href="/">Главная</a>
+            <a href="/pages/catalog.php">Каталог</a>
+            <a href="/pages/news.php">Новости</a>
+            <a href="/pages/about.php">О компании</a>
+            <a href="/pages/document.php">Документация</a>
+            <a href="/pages/obuchenie.php">Обучение</a>
+        </div>
+
+        <div class="footer-contacts">
+            <h4>Контакты</h4>
+            <a href="mailto:info@hsc-copter.com">info@hsc-copter.com</a>
+            <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+            <span class="footer-note">Пн–Пт, 9:00–18:00</span>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 HSC Copter. Все права защищены
+    </div>
+
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const modal = document.getElementById('consultModal');
+
+            if (!modal) {
+                console.warn('consultModal not found');
+                return;
+            }
+            document.querySelectorAll('.js-open-consult').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            document.querySelectorAll('.js-close-consult').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            const refreshBtn = document.getElementById('refreshCaptcha');
+            const captchaImg = document.getElementById('captchaImage');
+
+            if (refreshBtn && captchaImg) {
+                refreshBtn.addEventListener('click', () => {
+                    captchaImg.src = '/ajax/captcha/image/' + Date.now();
+                });
+            }
+        });
+    </script>
+</footer>
+<div class="consult-modal" id="consultModal">
+
+    <div class="consult-overlay js-close-consult"></div>
+
+    <div class="consult-window">
+
+        <button class="consult-close js-close-consult">✕</button>
+
+        <h2 class="consult-title">
+            Запросить консультацию
+        </h2>
+
+        <p class="consult-subtitle">
+            Оставьте сообщение — мы свяжемся с вами в ближайшее время
+        </p>
+
+        <form action="/ajax/message/send"
+              method="POST"
+              id="consultForm">
+
+            <input type="hidden" name="Code" value="Mail.Question.Exchange">
+            <input type="hidden" name="IsValid" value="True">
+            <input type="hidden" name="IsNotAutor" value="False">
+            <input type="hidden" name="ReturnUrl" value="">
+            <input type="hidden" name="__RequestVerificationToken" value="YOUR_TOKEN_HERE">
+
+            <div class="consult-grid">
+
+                <div class="consult-field full">
+                    <textarea name="Message" placeholder="Введите ваше сообщение*" required></textarea>
+                </div>
+
+                <div class="consult-field">
+                    <input type="text" name="Name" placeholder="Ваше имя*" required>
+                </div>
+
+                <div class="consult-field">
+                    <input type="email" name="Email" placeholder="Ваш e-mail">
+                </div>
+
+                <div class="consult-field">
+                    <input type="tel" name="Phone" placeholder="Телефон">
+                </div>
+
+            </div>
+
+            <button type="submit" class="consult-submit">
+                Отправить запрос
+            </button>
+
+        </form>
+
+    </div>
+</div>
+<script src="/styles/js/script.js"></script>
+
+    <script>
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('navOverlay');
+        const navClose = document.getElementById('navClose');
+
+        function closeMenu() {
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', closeMenu);
+        navClose.addEventListener('click', closeMenu);
+
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+
+</script>
+
+
+
+</body>
+</html>
