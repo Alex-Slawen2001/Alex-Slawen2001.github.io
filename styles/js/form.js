@@ -6,11 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Элементы формы
     const form = document.getElementById('consultForm');
     const submitBtn = form?.querySelector('.consult-submit');
-
-    // Поля формы и элементы ошибок (используем существующие)
     const fields = {
         message: {
             input: form?.querySelector('textarea[name="Message"]'),
@@ -30,25 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Открытие модального окна
     document.querySelectorAll('.js-open-consult').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            // Очищаем ошибки при открытии
             clearAllErrors();
         });
     });
 
-    // Закрытие модального окна
     document.querySelectorAll('.js-close-consult').forEach(btn => {
         btn.addEventListener('click', () => {
             closeModal();
         });
     });
 
-    // Обновление капчи (если есть)
     const refreshBtn = document.getElementById('refreshCaptcha');
     const captchaImg = document.getElementById('captchaImage');
 
@@ -58,47 +51,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Обработка отправки формы
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-
-            // Проверяем валидность полей
             if (!validateForm()) {
                 return;
             }
 
-            // Показываем состояние загрузки
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Отправка...';
             }
 
             try {
-                // Собираем данные формы
                 const formData = new FormData(form);
-
-                // Имитация отправки на сервер
                 const success = await simulateServerRequest(formData);
 
                 if (success) {
-                    // Показываем сообщение об успехе
                     showSuccessMessage();
-
-                    // Автоматически закрываем через 3 секунды
                     setTimeout(() => {
                         closeModal();
                         resetForm();
                     }, 3000);
                 } else {
-                    // Показываем сообщение об ошибке
                     showErrorMessage('Произошла ошибка при отправке. Попробуйте еще раз.');
                 }
             } catch (error) {
                 console.error('Ошибка отправки формы:', error);
                 showErrorMessage('Произошла ошибка. Пожалуйста, попробуйте позже.');
             } finally {
-                // Восстанавливаем кнопку
                 if (submitBtn) {
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Отправить запрос';
@@ -106,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Добавляем валидацию при потере фокуса
         Object.values(fields).forEach(field => {
             if (field.input) {
                 field.input.addEventListener('blur', () => {
@@ -120,11 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Функции валидации
     function validateForm() {
         let isValid = true;
 
-        // Проверяем обязательные поля
         if (fields.message.input && !fields.message.input.value.trim()) {
             showFieldError(fields.message, 'Введите ваше сообщение');
             isValid = false;
@@ -135,13 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
             isValid = false;
         }
 
-        // Проверяем email если он заполнен
         if (fields.email.input && fields.email.input.value.trim() && !isValidEmail(fields.email.input.value.trim())) {
             showFieldError(fields.email, 'Введите корректный email адрес');
             isValid = false;
         }
 
-        // Проверяем телефон если он заполнен
         if (fields.phone.input && fields.phone.input.value.trim() && !isValidPhone(fields.phone.input.value.trim())) {
             showFieldError(fields.phone, 'Введите корректный номер телефона');
             isValid = false;
@@ -176,15 +152,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showFieldError(field, message) {
-        // Очищаем предыдущую ошибку
         clearFieldError(field);
 
-        // Используем существующий элемент ошибки
         if (field.error) {
             field.error.textContent = message;
             field.error.style.display = 'block';
-
-            // Добавляем стиль к полю ввода
             if (field.input) {
                 field.input.style.borderColor = '#ff4757';
                 field.input.style.borderWidth = '2px';
@@ -193,13 +165,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function clearFieldError(field) {
-        // Очищаем существующий элемент ошибки
         if (field.error) {
             field.error.textContent = '';
             field.error.style.display = 'none';
         }
 
-        // Восстанавливаем стандартный стиль поля
         if (field.input) {
             field.input.style.borderColor = '';
             field.input.style.borderWidth = '';
@@ -222,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return re.test(phone.replace(/\s/g, ''));
     }
 
-    // Функции для работы с модальным окном
     function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = '';
@@ -236,9 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Временные сообщения
     function showSuccessMessage() {
-        // Создаем временное сообщение об успехе
         const successMsg = document.createElement('div');
         successMsg.className = 'success-message';
         successMsg.style.cssText = `
@@ -254,7 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
             animation: slideIn 0.3s ease;
         `;
 
-        // Добавляем стили для анимации
         if (!document.querySelector('#consult-form-styles')) {
             const style = document.createElement('style');
             style.id = 'consult-form-styles';
@@ -314,7 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.body.appendChild(successMsg);
 
-        // Удаляем сообщение через 5 секунд
         setTimeout(() => {
             successMsg.style.animation = 'slideOut 0.3s ease';
             setTimeout(() => successMsg.remove(), 300);
@@ -322,7 +287,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showErrorMessage(message) {
-        // Создаем временное сообщение об ошибке
         const errorMsg = document.createElement('div');
         errorMsg.className = 'error-message';
         errorMsg.style.cssText = `
@@ -349,23 +313,18 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         document.body.appendChild(errorMsg);
-
-        // Удаляем сообщение через 5 секунд
         setTimeout(() => {
             errorMsg.style.animation = 'slideOut 0.3s ease';
             setTimeout(() => errorMsg.remove(), 300);
         }, 5000);
     }
 
-    // Симуляция отправки на сервер
     async function simulateServerRequest(formData) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                // 90% успешных отправок, 10% ошибок для демонстрации
                 const isSuccess = Math.random() > 0.1;
 
                 if (isSuccess) {
-                    // Логируем данные в консоль
                     console.log('Форма отправлена:', {
                         message: fields.message.input?.value,
                         name: fields.name.input?.value,
@@ -381,11 +340,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Убедимся, что элементы ошибок скрыты при загрузке
     clearAllErrors();
 });
 
-// Для реальной отправки замените simulateServerRequest на:
+// Для реальной отправки  simulateServerRequest на:
 /*
 async function sendRealRequest(formData) {
     try {
