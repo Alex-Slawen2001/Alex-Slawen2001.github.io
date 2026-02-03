@@ -63,7 +63,7 @@
                             <h1>Инновационные решения</h1>
                             <p>Разработка, внедрение и сопровождение авиационных систем</p>
                             <div class="hero-actions">
-                                <button class="btn-primary">Каталог</button>
+                                <button id="but_catalog1" class="btn-primary">Каталог</button>
                                 <button class="btn-outline custom_button js-open-consult">Запросить консультацию</button>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                             <h1>Инновационные решения</h1>
                             <p>Разработка, внедрение и сопровождение авиационных систем</p>
                             <div class="hero-actions">
-                                <button class="btn-primary">Каталог</button>
+                                <button id="but_catalog2" class="btn-primary">Каталог</button>
                                 <button class="btn-outline custom_button js-open-consult">Запросить консультацию</button>
                             </div>
                         </div>
@@ -427,7 +427,15 @@
 
 
 </script>
+<script>
 
+    but1 = document.getElementById('but_catalog1').addEventListener('click',function () {
+     window.location.href = '/pages/catalog.html'
+    });
+    but2 = document.getElementById('but_catalog2').addEventListener('click',function (){
+        window.location.href= "/pages/catalog.html"
+    });
+</script>
 
 
 </body>
