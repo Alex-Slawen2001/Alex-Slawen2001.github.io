@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="/styles/images/hsc-favicon_all.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/css/styles.css">
-
+    <link rel="stylesheet" href="/styles/css/form.css">
 
 </head>
 <body>
@@ -347,11 +347,9 @@
     </script>
 </footer>
 <div class="consult-modal" id="consultModal">
-
     <div class="consult-overlay js-close-consult"></div>
 
     <div class="consult-window">
-
         <button class="consult-close js-close-consult">✕</button>
 
         <h2 class="consult-title">
@@ -362,45 +360,51 @@
             Оставьте сообщение — мы свяжемся с вами в ближайшее время
         </p>
 
-        <form action="/ajax/message/send"
-              method="POST"
-              id="consultForm">
-
-            <input type="hidden" name="Code" value="Mail.Question.Exchange">
-            <input type="hidden" name="IsValid" value="True">
-            <input type="hidden" name="IsNotAutor" value="False">
-            <input type="hidden" name="ReturnUrl" value="">
-            <input type="hidden" name="__RequestVerificationToken" value="YOUR_TOKEN_HERE">
-
+        <form id="consultForm">
             <div class="consult-grid">
-
                 <div class="consult-field full">
-                    <textarea name="Message" placeholder="Введите ваше сообщение*" required></textarea>
+                    <textarea name="message" id="messageField" placeholder="Введите ваше сообщение*" required></textarea>
+                    <div class="error-message" id="messageError"></div>
                 </div>
 
                 <div class="consult-field">
-                    <input type="text" name="Name" placeholder="Ваше имя*" required>
+                    <input type="text" name="name" id="nameField" placeholder="Ваше имя*" required>
+                    <div class="error-message" id="nameError"></div>
                 </div>
 
                 <div class="consult-field">
-                    <input type="email" name="Email" placeholder="Ваш e-mail">
+                    <input type="email" name="email" id="emailField" placeholder="Ваш e-mail">
+                    <div class="error-message" id="emailError"></div>
                 </div>
 
                 <div class="consult-field">
-                    <input type="tel" name="Phone" placeholder="Телефон">
+                    <input type="tel" name="phone" id="phoneField" placeholder="Телефон">
+                    <div class="error-message" id="phoneError"></div>
                 </div>
-
             </div>
 
-            <button type="submit" class="consult-submit">
+            <button type="submit" class="consult-submit" id="submitBtn">
                 Отправить запрос
             </button>
 
-        </form>
+            <div class="form-message" id="successMessage" style="display: none;">
+                <div class="success-icon">✓</div>
+                <h3>Заявка успешно отправлена!</h3>
+                <p>Мы свяжемся с вами в ближайшее время.</p>
+                <button type="button" class="close-message-btn js-close-consult">Закрыть</button>
+            </div>
 
+            <div class="form-message error" id="errorMessage" style="display: none;">
+                <div class="error-icon">⚠</div>
+                <h3>Произошла ошибка</h3>
+                <p id="errorText">Пожалуйста, попробуйте позже.</p>
+                <button type="button" class="retry-btn">Попробовать снова</button>
+            </div>
+        </form>
     </div>
 </div>
-<script src="/styles/js/script.js"></script>
+<script src="/styles/js/script.js">
+</script> <script src="/styles/js/form.js"></script>
 
 <script>
     const burger = document.getElementById('burger');
