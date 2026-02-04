@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Войти в систему — HSC Copter</title>
+
+    <meta name="description" content="Вход в личный кабинет HSC Copter">
+    <link rel="shortcut icon" href="/styles/images/hsc-favicon_all.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/css/styles.css">
+    <link rel="stylesheet" href="/styles/css/login.css">
+    <link rel="stylesheet" href="/styles/css/form.css">
+
+
+</head>
+<body>
+<header class="header">
+    <div class="container header-inner">
+        <div class="logo">
+            <a href="/">
+                <img style="width: 50%;" src="/styles/images/logo.png" alt="HSC Copter">
+            </a>
+        </div>
+
+        <nav class="nav" id="mobileNav">
+            <button class="nav-close" id="navClose" aria-label="Закрыть меню">
+                <span></span><span></span>
+            </button>
+
+            <a href="/" class="nav__link">Главная</a>
+            <a href="/pages/about.html" class="nav__link">О компании</a>
+            <a href="/pages/catalog.html" class="nav__link">Каталог</a>
+            <a href="/pages/news.html" class="nav__link">Новости</a>
+            <a href="/pages/modern.html" class="nav__link">Модернизация</a>
+            <a href="/pages/contacts.html" class="nav__link">Контакты</a>
+            <a href="/pages/reg.html" class="nav__link reg_button">Регистрация</a>
+            <a href="/pages/login.html" class="nav__link login_button active">Войти</a>
+        </nav>
+
+        <div class="header__actions">
+            <a href="/pages/reg.html" class="btn-primary nav-cta">
+                Регистрация
+            </a>
+
+            <button class="burger" id="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+</header>
+
+<div class="container">
+    <div class="page-header">
+        <h1>Вход в систему</h1>
+        <p>Войдите в свой личный кабинет для доступа ко всем услугам Вертолетной сервисной компании</p>
+    </div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h2>Вход в аккаунт</h2>
+                <p>Используйте ваш логин и пароль</p>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                Неверный логин или пароль
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label required" for="username">Логин или Email</label>
+                    <input type="text" class="form-input" id="username" name="username" placeholder="Введите ваш логин или email" required>
+                    <span class="form-hint" id="usernameHint">Введите логин или email, указанный при регистрации</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required" for="password">Пароль</label>
+                    <div class="password-field">
+                        <input type="password" class="form-input" id="password" name="password" placeholder="Введите ваш пароль" required>
+                        <button type="button" class="toggle-password" id="togglePassword" aria-label="Показать пароль">
+                            👁
+                        </button>
+                    </div>
+                    <span class="form-hint" id="passwordHint">Введите пароль, указанный при регистрации</span>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" class="checkbox" id="remember" name="remember">
+                    <label class="checkbox-label" for="remember">
+                        Запомнить меня на этом устройстве
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        Войти в систему <i>→</i>
+                    </button>
+                </div>
+            </form>
+
+            <div class="login-links">
+                <div class="login-link">
+                    <a href="/pages/password-recovery.html">Забыли пароль?</a>
+                </div>
+                <div class="login-link">
+                    Нет аккаунта? <a href="/pages/reg.html">Зарегистрируйтесь</a>
+                </div>
+            </div>
+
+            <div class="divider">
+                или войдите через
+            </div>
+
+            <div class="social-login">
+                <button type="button" class="social-btn" id="googleLogin">
+                    <span class="social-icon">G</span>
+                    <span>Google</span>
+                </button>
+                <button type="button" class="social-btn" id="yandexLogin">
+                    <span class="social-icon">Я</span>
+                    <span>Яндекс</span>
+                </button>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                <div class="success-icon">
+                    <i>✓</i>
+                </div>
+                <div class="success-title">Вход выполнен успешно!</div>
+                <div class="success-text">
+                    Вы будете перенаправлены в личный кабинет через несколько секунд.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <strong class="footer-logo">HSC Copter</strong>
+            <p class="footer-desc">
+                Профессиональные беспилотные технологии и решения для промышленности
+            </p>
+        </div>
+
+        <div class="footer-nav">
+            <h4>Навигация</h4>
+            <a href="/">Главная</a>
+            <a href="/pages/catalog.html">Каталог</a>
+            <a href="/pages/news.html">Новости</a>
+            <a href="/pages/about.html">О компании</a>
+            <a href="/pages/document.html">Документация</a>
+            <a href="/pages/obuchenie.html">Обучение</a>
+        </div>
+
+        <div class="footer-contacts">
+            <h4>Контакты</h4>
+            <a href="mailto:info@hsc-copter.com">info@hsc-copter.com</a>
+            <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+            <span class="footer-note">Пн–Пт, 9:00–18:00</span>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 HSC Copter. Все права защищены
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Элементы формы
+        const loginForm = document.getElementById('loginForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const usernameInput = document.getElementById('username');
+
+        // Переключение видимости пароля
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁' : '👁️‍🗨️';
+        });
+
+        // Валидация формы
+        function validateForm() {
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value;
+
+            errorMessage.classList.remove('show');
+
+            if (!username) {
+                showError('Пожалуйста, введите логин или email');
+                usernameInput.classList.add('error');
+                return false;
+            }
+
+            if (!password) {
+                showError('Пожалуйста, введите пароль');
+                passwordInput.classList.add('error');
+                return false;
+            }
+
+            return true;
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.classList.add('show');
+        }
+
+        function clearErrors() {
+            errorMessage.classList.remove('show');
+            usernameInput.classList.remove('error');
+            passwordInput.classList.remove('error');
+        }
+
+        // Очистка ошибок при вводе
+        usernameInput.addEventListener('input', clearErrors);
+        passwordInput.addEventListener('input', clearErrors);
+
+        // Обработка отправки формы
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            if (!validateForm()) {
+                return;
+            }
+
+            // Показываем состояние загрузки
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Вход... <div class="loading-spinner"></div>';
+
+            try {
+                // Симуляция запроса к серверу
+                const success = await simulateLoginRequest();
+
+                if (success) {
+                    // Показываем сообщение об успехе
+                    loginForm.style.display = 'none';
+                    document.querySelector('.login-links').style.display = 'none';
+                    document.querySelector('.social-login').style.display = 'none';
+                    document.querySelector('.divider').style.display = 'none';
+                    successMessage.classList.add('show');
+
+                    // Перенаправление через 2 секунды
+                    setTimeout(() => {
+                        window.location.href = 'https://passport.hsc-copter.com/dashboard';
+                    }, 2000);
+                } else {
+                    // Показываем сообщение об ошибке
+                    showError('Неверный логин или пароль. Проверьте введенные данные.');
+                }
+            } catch (error) {
+                console.error('Ошибка входа:', error);
+                showError('Произошла ошибка при входе. Пожалуйста, попробуйте позже.');
+            } finally {
+                // Восстанавливаем кнопку
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Войти в систему <i>→</i>';
+            }
+        });
+
+        // Симуляция запроса к серверу
+        function simulateLoginRequest() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // 80% успешных входов, 20% ошибок для демонстрации
+                    const isSuccess = Math.random() > 0.2;
+
+                    if (isSuccess) {
+                        // Логируем данные в консоль
+                        console.log('Вход выполнен:', {
+                            username: usernameInput.value,
+                            timestamp: new Date().toISOString(),
+                            remember: document.getElementById('remember').checked
+                        });
+                        resolve(true);
+                    } else {
+                        reject(new Error('Неверные учетные данные'));
+                    }
+                }, 1500);
+            });
+        }
+
+        // Социальные кнопки (демо)
+        document.getElementById('googleLogin').addEventListener('click', function() {
+            alert('Вход через Google (демо)');
+        });
+
+        document.getElementById('yandexLogin').addEventListener('click', function() {
+            alert('Вход через Яндекс (демо)');
+        });
+
+        // Стили для спиннера загрузки
+        const style = document.createElement('style');
+        style.textContent = `
+            .loading-spinner {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                border-top-color: white;
+                animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+                to { transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Навигационное меню (аналогично регистрации)
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('navOverlay');
+        const navClose = document.getElementById('navClose');
+
+        function closeMenu() {
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', closeMenu);
+        navClose.addEventListener('click', closeMenu);
+
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    });
+</script>
+
+<div class="consult-modal" id="consultModal">
+    <div class="consult-overlay js-close-consult"></div>
+
+    <div class="consult-window">
+        <button class="consult-close js-close-consult">✕</button>
+
+        <h2 class="consult-title">
+            Запросить консультацию
+        </h2>
+
+        <p class="consult-subtitle">
+            Оставьте сообщение — мы свяжемся с вами в ближайшее время
+        </p>
+
+        <form id="consultForm">
+            <div class="consult-grid">
+                <div class="consult-field full">
+                    <textarea name="message" id="messageField" placeholder="Введите ваше сообщение*" required></textarea>
+                    <div class="error-message" id="messageError"></div>
+                </div>
+
+                <div class="consult-field">
+                    <input type="text" name="name" id="nameField" placeholder="Ваше имя*" required>
+                    <div class="error-message" id="nameError"></div>
+                </div>
+
+                <div class="consult-field">
+                    <input type="email" name="email" id="emailField" placeholder="Ваш e-mail">
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="consult-field">
+                    <input type="tel" name="phone" id="phoneField" placeholder="Телефон">
+                    <div class="error-message" id="phoneError"></div>
+                </div>
+            </div>
+
+            <button type="submit" class="consult-submit" id="submitConsultBtn">
+                Отправить запрос
+            </button>
+
+            <div class="form-message" id="successMessageConsult" style="display: none;">
+                <div class="success-icon">✓</div>
+                <h3>Заявка успешно отправлена!</h3>
+                <p>Мы свяжемся с вами в ближайшее время.</p>
+                <button type="button" class="close-message-btn js-close-consult">Закрыть</button>
+            </div>
+
+            <div class="form-message error" id="errorMessageConsult" style="display: none;">
+                <div class="error-icon">⚠</div>
+                <h3>Произошла ошибка</h3>
+                <p id="errorText">Пожалуйста, попробуйте позже.</p>
+                <button type="button" class="retry-btn">Попробовать снова</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/styles/js/script.js"></script>
+<script src="/styles/js/form.js"></script>
+</body>
+</html>
