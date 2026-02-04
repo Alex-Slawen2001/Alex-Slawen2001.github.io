@@ -1,15 +1,5 @@
 let lastSubmissionTime = 0;
-const SUBMISSION_COOLDOWN = 10000;
-
-
-const SECURE_CONFIG = {
-    telegram: {
-
-        token: atob('T0RRNE9USTRNVFUzTmpvd01FRkdjMGhGYldnNGIxUTRZVjkzVmt4TVQyMXhjVjlLU1ZZeGEwZEJWQzE1V0ZFPQ==').split(':')[1],
-
-        chatId: atob('TVRrNE5UVTJNakV6TkE9PQ==')
-    }
-};
+const SUBMISSION_COOLDOWN = 10000; // 10 секунд
 
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('consultModal');
@@ -365,14 +355,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function sendRealRequest(formData) {
         try {
-
-            const TELEGRAM_BOT_TOKEN = SECURE_CONFIG.telegram.token;
-            const TELEGRAM_CHAT_ID = SECURE_CONFIG.telegram.chatId;
-
-            if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-                throw new Error('Конфигурация Telegram не загружена');
-            }
-
             const data = {};
             formData.forEach((value, key) => {
                 if (key !== 'website') {
@@ -380,47 +362,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            function escapeMarkdown(text) {
-                if (!text) return '';
-                return text.toString()
-                    .replace(/_/g, '\\_')
-                    .replace(/\*/g, '\\*')
-                    .replace(/\[/g, '\\[')
-                    .replace(/\]/g, '\\]')
-                    .replace(/\(/g, '\\(')
-                    .replace(/\)/g, '\\)')
-                    .replace(/~/g, '\\~')
-                    .replace(/`/g, '\\`')
-                    .replace(/>/g, '\\>')
-                    .replace(/#/g, '\\#')
-                    .replace(/\+/g, '\\+')
-                    .replace(/-/g, '\\-')
-                    .replace(/=/g, '\\=')
-                    .replace(/\|/g, '\\|')
-                    .replace(/\{/g, '\\{')
-                    .replace(/\}/g, '\\}')
-                    .replace(/\./g, '\\.')
-                    .replace(/!/g, '\\!');
-            }
+            const TELEGRAM_BOT_TOKEN = '8489281576:AAFsHEmh8oT8a_wVLLOmqq_JIV1kGAT-yXQ';
+            const TELEGRAM_CHAT_ID = '1985562134';
 
-            // Форматируем сообщение
             const message = `
-🎯 *НОВАЯ ЗАЯВКА С САЙТА*
+🎯 НОВАЯ ЗАЯВКА С САЙТА
 
-👤 *Имя:* ${escapeMarkdown(data.Name) || 'Не указано'}
-📧 *Email:* ${escapeMarkdown(data.Email) || 'Не указан'}
-📱 *Телефон:* ${escapeMarkdown(data.Phone) || 'Не указан'}
-🏢 *Компания:* ${escapeMarkdown(data.Company) || 'Не указана'}
+👤 Имя: ${data.Name || 'Не указано'}
+📧 Email: ${data.Email || 'Не указан'}
+📱 Телефон: ${data.Phone || 'Не указан'}
+🏢 Компания: ${data.Company || 'Не указана'}
 
-💬 *Сообщение:*
-${escapeMarkdown(data.Message) || 'Не указано'}
+💬 Сообщение:
+${data.Message || 'Не указано'}
 
 ━━━━━━━━━━━━━━
 📅 ${new Date().toLocaleString('ru-RU')}
 🌐 ${window.location.href}
             `;
 
-            const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            const proxyUrl = 'https://corsproxy.io/?';
+            const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+            const response = await fetch(proxyUrl + encodeURIComponent(telegramUrl), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -428,25 +392,20 @@ ${escapeMarkdown(data.Message) || 'Не указано'}
                 body: JSON.stringify({
                     chat_id: TELEGRAM_CHAT_ID,
                     text: message,
-                    parse_mode: 'Markdown',
+                    parse_mode: 'HTML',
                     disable_notification: false,
                     disable_web_page_preview: true
                 })
             });
 
             const result = await response.json();
+            console.log('Telegram response:', result);
 
             if (result.ok) {
                 console.log('✅ Сообщение отправлено в Telegram');
                 return true;
             } else {
                 console.error('❌ Ошибка Telegram:', result);
-
-                // Пробуем отправить без форматирования, если Markdown ошибка
-                if (result.description && result.description.includes('Markdown')) {
-                    return await sendPlainTextMessage(data, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID);
-                }
-
                 throw new Error(result.description || 'Ошибка отправки в Telegram');
             }
 
@@ -454,40 +413,6 @@ ${escapeMarkdown(data.Message) || 'Не указано'}
             console.error('Ошибка отправки формы:', error);
             throw error;
         }
-    }
-
-    async function sendPlainTextMessage(data, token, chatId) {
-        const plainMessage = `
-НОВАЯ ЗАЯВКА С САЙТА
-
-Клиент: ${data.Name || 'Не указано'}
-Email: ${data.Email || 'Не указан'}
-Телефон: ${data.Phone || 'Не указан'}
-Компания: ${data.Company || 'Не указана'}
-
-Сообщение:
-${data.Message || 'Не указано'}
-
-━━━━━━━━━━━━━━
-Дата: ${new Date().toLocaleString('ru-RU')}
-Страница: ${window.location.href}
-        `;
-
-        const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                chat_id: chatId,
-                text: plainMessage,
-                parse_mode: null,
-                disable_notification: false
-            })
-        });
-
-        const result = await response.json();
-        return result.ok || false;
     }
 
     clearAllErrors();
