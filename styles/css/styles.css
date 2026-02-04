@@ -474,7 +474,6 @@ body {
 }
 /* ================= CONSULT MODAL ================= */
 /* ================= slider ================= */
-/* Основной блок героя - ТЕМНЫЙ ФОН */
 .hero-with-menu {
     padding: 0;
     min-height: 100vh;
@@ -691,7 +690,7 @@ body {
 
 .menu-card-description {
     font-size: 14px;
-    color: #b0b0b0; /* Светло-серый для описания */
+    color: #b0b0b0;
     line-height: 1.5;
     margin-bottom: 15px;
 }
@@ -719,7 +718,6 @@ body {
     transform: translateX(5px);
 }
 
-/* Промо-карточка в темном стиле */
 .promo-card {
     background: #2d2d2d;
     color: #fff;
@@ -1783,7 +1781,6 @@ body {
 /*slider product*/
 /* ================= PRODUCT SLIDER ADAPTIVE ================= */
 
-/* Включаем touch-скролл ТОЛЬКО не на desktop */
 @media (max-width: 1024px) {
     .product-slider {
         overflow-x: auto;
