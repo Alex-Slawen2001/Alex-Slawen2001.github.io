@@ -361,6 +361,11 @@
         </p>
 
         <form id="consultForm">
+            <input type="text"
+                   name="website"
+                   style="display: none !important; position: absolute; left: -9999px; top: -9999px;"
+                   tabindex="-1"
+                   autocomplete="off">
             <div class="consult-grid">
                 <div class="consult-field full">
                     <textarea name="message" id="messageField" placeholder="Введите ваше сообщение*" required></textarea>
@@ -381,6 +386,11 @@
                     <input type="tel" name="phone" id="phoneField" placeholder="Телефон">
                     <div class="error-message" id="phoneError"></div>
                 </div>
+                <div class="consult-field">
+                    <input type="text" name="company" id="companyField" placeholder="Название вашей компании" required>
+                    <div class="error-message" id="companyError"></div>
+                </div>
+
             </div>
 
             <button type="submit" class="consult-submit" id="submitBtn">
