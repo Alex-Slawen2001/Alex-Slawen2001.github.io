@@ -1058,7 +1058,7 @@ body {
 /* Адаптив */
 @media (max-width: 992px) {
     .product-slider {
-        gap: 25px; /* уменьшаем gap на планшетах */
+        gap: 25px;
     }
 
     .product-slide {
@@ -1139,6 +1139,61 @@ body {
     .product-slide .btn-primary {
         padding: 10px 20px;
         font-size: 14px;
+    }
+}
+/* Стили для сообщения "Товары не найдены" */
+.no-products {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 40px !important;
+    text-align: center;
+    grid-column: 1 / -1;
+}
+
+.no-products h3 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.no-products p {
+    color: var(--text-secondary);
+}
+
+/* Стили для кнопки сброса фильтров */
+.btn-secondary {
+    background: var(--bg-secondary);
+    border: none;
+    padding: 10px 14px;
+    border-radius: var(--radius);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+}
+
+/* Стили для полей фильтров */
+.filters input:focus,
+.filters select:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: -1px;
+}
+
+/* Адаптивность для фильтров */
+@media (max-width: 992px) {
+    .catalog-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filters {
+        order: -1;
+        margin-bottom: 20px;
     }
 }
 /* ================= slider products ================= */
