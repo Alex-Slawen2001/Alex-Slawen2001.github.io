@@ -1,6 +1,3 @@
-let lastSubmissionTime = 0;
-const SUBMISSION_COOLDOWN = 10000; // 10 секунд
-
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('consultModal');
 
@@ -61,28 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-
-            // Проверка на частые отправки
-            const now = Date.now();
-            if (now - lastSubmissionTime < SUBMISSION_COOLDOWN) {
-                showErrorMessage('Пожалуйста, подождите 10 секунд перед следующей отправкой');
-                return;
-            }
-            lastSubmissionTime = now;
-
-            // Проверка honeypot поля
-            const honeypot = form.querySelector('input[name="website"]');
-            if (honeypot && honeypot.value.trim() !== '') {
-                // Это бот, но показываем успех
-                console.log('Bot detected via honeypot');
-                showSuccessMessage();
-                setTimeout(() => {
-                    closeModal();
-                    resetForm();
-                }, 2000);
-                return;
-            }
-
             if (!validateForm()) {
                 return;
             }
@@ -94,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const formData = new FormData(form);
-                const success = await sendRealRequest(formData);
+                const success = await simulateServerRequest(formData);
 
                 if (success) {
                     showSuccessMessage();
@@ -220,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const re = /^[\d\s\-\+\(\)]{10,}$/;
         return re.test(phone.replace(/\s/g, ''));
     }
-
     function isValidCompany(company) {
         const re = /^[A-Za-z\s]+$/;
         return re.test(company);
@@ -353,67 +327,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-    async function sendRealRequest(formData) {
-        try {
-            const data = {};
-            formData.forEach((value, key) => {
-                if (key !== 'website') {
-                    data[key] = value;
+    async function simulateServerRequest(formData) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const isSuccess = Math.random() > 0.1;
+
+                if (isSuccess) {
+                    console.log('Форма отправлена:', {
+                        message: fields.message.input?.value,
+                        name: fields.name.input?.value,
+                        email: fields.email.input?.value,
+                        phone: fields.phone.input?.value,
+                        company: fields.company.input?.value,
+                        timestamp: new Date().toISOString()
+                    });
+                    resolve(true);
+                } else {
+                    reject(new Error('Ошибка сервера'));
                 }
-            });
-
-            const TELEGRAM_BOT_TOKEN = '8489281576:AAFsHEmh8oT8a_wVLLOmqq_JIV1kGAT-yXQ';
-            const TELEGRAM_CHAT_ID = '1985562134';
-
-            const message = `
-🎯 НОВАЯ ЗАЯВКА С САЙТА
-
-👤 Имя: ${data.Name || 'Не указано'}
-📧 Email: ${data.Email || 'Не указан'}
-📱 Телефон: ${data.Phone || 'Не указан'}
-🏢 Компания: ${data.Company || 'Не указана'}
-
-💬 Сообщение:
-${data.Message || 'Не указано'}
-
-━━━━━━━━━━━━━━
-📅 ${new Date().toLocaleString('ru-RU')}
-🌐 ${window.location.href}
-            `;
-
-            const proxyUrl = 'https://corsproxy.io/?';
-            const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-
-            const response = await fetch(proxyUrl + encodeURIComponent(telegramUrl), {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: TELEGRAM_CHAT_ID,
-                    text: message,
-                    parse_mode: 'HTML',
-                    disable_notification: false,
-                    disable_web_page_preview: true
-                })
-            });
-
-            const result = await response.json();
-            console.log('Telegram response:', result);
-
-            if (result.ok) {
-                console.log('✅ Сообщение отправлено в Telegram');
-                return true;
-            } else {
-                console.error('❌ Ошибка Telegram:', result);
-                throw new Error(result.description || 'Ошибка отправки в Telegram');
-            }
-
-        } catch (error) {
-            console.error('Ошибка отправки формы:', error);
-            throw error;
-        }
+            }, 1500);
+        });
     }
 
     clearAllErrors();
 });
+
+// Для реальной отправки  simulateServerRequest на:
+/*
+async function sendRealRequest(formData) {
+    try {
+        const response = await fetch('/ajax/message/send', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Ошибка сервера: ' + response.status);
+        }
+
+        const data = await response.json();
+        return data.success || true;
+    } catch (error) {
+        console.error('Ошибка отправки:', error);
+        throw error;
+    }
+}
+*/ 
