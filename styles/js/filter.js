@@ -1,21 +1,10 @@
-
-    document.addEventListener('DOMContentLoaded', function() {
-    console.log('=== ЗАПУСК ФИЛЬТРА КАТАЛОГА ===');
-
-    setTimeout(initializeCatalogFilter, 300);
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(initializeCatalogFilter, 0);
 });
 
-    function initializeCatalogFilter() {
-    console.log('🔄 Инициализация фильтра...');
-
-    const productCards = document.querySelectorAll('.product-card');
-    console.log('📦 Найдено товаров:', productCards.length);
-
-    if (productCards.length === 0) {
-    console.error('❌ Не найдены товары!');
-    return;
-}
-
+function initializeCatalogFilter() {
+    const cards = Array.from(document.querySelectorAll('.product-card'));
+    if (!cards.length) return;
 
     const filterModel = document.querySelector('.filters select:nth-of-type(1)');
     const filterCategory = document.querySelector('.filters select:nth-of-type(2)');
@@ -23,241 +12,123 @@
     const filterPrice = document.querySelector('.filters input[type="number"]');
     const sortSelect = document.querySelector('.sort select');
     const foundCount = document.querySelector('.catalog-toolbar strong');
+    const grid = document.querySelector('.catalog-grid');
 
-    console.log('🔍 Значения в селекте категорий:');
-    if (filterCategory) {
-    const options = filterCategory.querySelectorAll('option');
-    options.forEach((opt, i) => {
-    console.log(`  ${i}: "${opt.textContent}" (value: "${opt.value}")`);
-});
-}
+    const norm = (s) =>
+        (s || '')
+            .toString()
+            .replace(/\u00A0/g, ' ')
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, ' ');
 
+    const normCategory = (s) => {
+        const t = norm(s);
+        if (t === 'авионика' || t === 'авиаоника') return 'авиаоника';
+        return t;
+    };
 
-    const products = [];
+    const parsePrice = (el) => {
+        const txt = el ? el.textContent : '';
+        const digits = (txt || '').replace(/[^\d]/g, '');
+        return parseInt(digits, 10) || 0;
+    };
 
-    productCards.forEach((card, index) => {
+    const products = cards.map((card, index) => {
+        const titleEl = card.querySelector('.product-title');
+        const skuEl = card.querySelector('.product-sku');
+        const priceEl = card.querySelector('.product-price');
 
-    const titleElem = card.querySelector('.product-title');
-    const title = titleElem ? titleElem.textContent.trim() : `Товар ${index + 1}`;
+        const title = titleEl ? titleEl.textContent.trim() : `Товар ${index + 1}`;
+        const sku = skuEl ? skuEl.textContent.replace('SKU:', '').trim() : '';
+        const price = parsePrice(priceEl);
 
+        const text = norm(card.innerText || card.textContent || '');
 
-    const skuElem = card.querySelector('.product-sku');
-    let sku = '';
-    if (skuElem) {
-    sku = skuElem.textContent.replace('SKU:', '').replace('SKU: ', '').trim();
-}
-    const attrsElem = card.querySelector('.product-attrs');
-    let model = '';
-    let category = '';
+        return { element: card, title, sku, price, text, originalIndex: index };
+    });
 
-    if (attrsElem) {
-    const attrsText = attrsElem.textContent;
+    const showCard = (el) => {
+        el.style.display = '';
+        el.removeAttribute('hidden');
+    };
 
-    const lines = attrsText.split('\n');
-    lines.forEach(line => {
-    const trimmedLine = line.trim();
-
-    if (trimmedLine.includes('Модель:')) {
-    model = trimmedLine.replace('Модель:', '').trim();
-}
-
-    if (trimmedLine.includes('Категория:')) {
-    category = trimmedLine.replace('Категория:', '').trim();
-} else if (trimmedLine === 'Трансмиссия' ||
-    trimmedLine === 'Лопасти' ||
-    trimmedLine === 'Авионика' ||
-    trimmedLine === 'Гидравлика') {
-    category = trimmedLine;
-}
-});
-}
-
-    if (!category && attrsElem) {
-    const attrsText = attrsElem.textContent;
-    if (attrsText.includes('Трансмиссия')) category = 'Трансмиссия';
-    else if (attrsText.includes('Лопасти')) category = 'Лопасти';
-    else if (attrsText.includes('Авионика')) category = 'Авиаоника';
-    else if (attrsText.includes('Авиаоника')) category = 'Авиаоника';
-    else if (attrsText.includes('Гидравлика')) category = 'Гидравлика';
-
-    if (filterCategory) {
-    const options = Array.from(filterCategory.options).map(opt => opt.textContent);
-    console.log('Доступные категории в селекте:', options);
-
-    options.forEach(opt => {
-    if (opt !== 'Все категории' && attrsText.includes(opt)) {
-    category = opt;
-}
-});
-}
-}
-
-
-    const priceElem = card.querySelector('.product-price');
-    let price = 0;
-    if (priceElem) {
-    const priceText = priceElem.textContent;
-    const cleanPrice = priceText.replace(/[^\d\s]/g, '');
-    price = parseInt(cleanPrice.replace(/\s/g, '')) || 0;
-}
-
-    products.push({
-    element: card,
-    title: title,
-    sku: sku,
-    model: model,
-    category: category,
-    price: price,
-    originalIndex: index
-});
-
-    console.log(`📝 Товар ${index + 1}: ${title}`);
-    console.log(`  Модель: "${model}"`);
-    console.log(`  Категория: "${category}" (извлечено из текста)`);
-    console.log(`  Цена: ${price}`);
-    console.log(`  SKU: ${sku}`);
-});
+    const hideCard = (el) => {
+        el.style.display = 'none';
+        el.setAttribute('hidden', 'hidden');
+    };
 
     function updateCatalog() {
-    console.log('\n🎯 ОБНОВЛЕНИЕ КАТАЛОГА');
+        const selectedModel = norm(filterModel ? filterModel.value : '');
+        const selectedCategory = normCategory(filterCategory ? filterCategory.value : '');
+        const skuSearch = norm(filterSku ? filterSku.value : '');
+        const maxPrice = filterPrice && filterPrice.value ? parseInt(filterPrice.value, 10) : 0;
+        const sortBy = sortSelect ? sortSelect.value : 'По умолчанию';
 
-    const selectedModel = filterModel ? filterModel.value : '';
-    const selectedCategory = filterCategory ? filterCategory.value : '';
-    const skuSearch = filterSku ? filterSku.value.trim().toLowerCase() : '';
-    const maxPrice = filterPrice && filterPrice.value ? parseInt(filterPrice.value) : 0;
-    const sortBy = sortSelect ? sortSelect.value : 'По умолчанию';
+        const allModels = norm('Все модели');
+        const allCats = normCategory('Все категории');
 
-    console.log('🔧 Параметры фильтрации:');
-    console.log('  Модель:', selectedModel);
-    console.log('  Категория:', selectedCategory, '(значение из селекта)');
-    console.log('  SKU поиск:', skuSearch);
-    console.log('  Макс цена:', maxPrice);
-    console.log('  Сортировка:', sortBy);
+        const visible = [];
 
-    let visibleProducts = [];
+        for (const p of products) {
+            let ok = true;
 
-    products.forEach(product => {
-    let show = true;
+            if (selectedModel && selectedModel !== allModels) {
+                if (!p.text.includes(norm('модель:') + ' ' + selectedModel) && !p.text.includes(selectedModel)) ok = false;
+            }
 
-    if (selectedModel && selectedModel !== 'Все модели') {
-    if (product.model !== selectedModel) {
-    show = false;
-}
-}
+            if (ok && selectedCategory && selectedCategory !== allCats) {
+                const hasCat =
+                    p.text.includes(norm('категория:') + ' ' + selectedCategory) ||
+                    p.text.includes(selectedCategory) ||
+                    (selectedCategory === 'авиаоника' && (p.text.includes('авионика') || p.text.includes('авиаоника')));
+                if (!hasCat) ok = false;
+            }
 
-    if (show && selectedCategory && selectedCategory !== 'Все категории') {
-    console.log(`  Проверка категории для "${product.title}":`);
-    console.log(`    Категория товара: "${product.category}"`);
-    console.log(`    Выбранная категория: "${selectedCategory}"`);
-    console.log(`    Совпадение: ${product.category === selectedCategory}`);
+            if (ok && skuSearch) {
+                if (!norm(p.sku).includes(skuSearch)) ok = false;
+            }
 
-    let categoryMatches = false;
+            if (ok && maxPrice > 0) {
+                if (p.price > maxPrice) ok = false;
+            }
 
-    if (product.category === selectedCategory) {
-    categoryMatches = true;
-}
-    else if (product.category && selectedCategory &&
-    product.category.includes(selectedCategory)) {
-    categoryMatches = true;
-}
-    else if (selectedCategory && product.category &&
-    selectedCategory.includes(product.category)) {
-    categoryMatches = true;
-}
-    else if (selectedCategory === 'Авиаоника' && product.category === 'Авионика') {
-    categoryMatches = true;
-}
-    else if (selectedCategory === 'Авионика' && product.category === 'Авиаоника') {
-    categoryMatches = true;
-}
+            if (ok) {
+                showCard(p.element);
+                visible.push(p);
+            } else {
+                hideCard(p.element);
+            }
+        }
 
-    if (!categoryMatches) {
-    console.log(`    ❌ Товар "${product.title}" не проходит фильтр категории`);
-    show = false;
-} else {
-    console.log(`    ✅ Категория совпадает`);
-}
-}
+        if (sortBy === 'Цена ↑') visible.sort((a, b) => a.price - b.price);
+        else if (sortBy === 'Цена ↓') visible.sort((a, b) => b.price - a.price);
+        else if (sortBy === 'По популярности') visible.sort((a, b) => a.title.localeCompare(b.title, 'ru'));
+        else visible.sort((a, b) => a.originalIndex - b.originalIndex);
 
-    if (show && skuSearch) {
-    if (!product.sku.toLowerCase().includes(skuSearch)) {
-    show = false;
-}
-}
+        if (grid) {
+            for (const p of visible) grid.appendChild(p.element);
+            for (const p of products) if (!visible.includes(p)) grid.appendChild(p.element);
+        }
 
-    if (show && maxPrice > 0) {
-    if (product.price > maxPrice) {
-    show = false;
-}
-}
+        if (foundCount) foundCount.textContent = visible.length;
+    }
 
-    if (show) {
-    visibleProducts.push(product);
-    product.element.style.display = 'flex';
-    console.log(`    ✅ Товар "${product.title}" ПРОШЕЛ все фильтры`);
-} else {
-    product.element.style.display = 'none';
-}
-});
-
-    console.log(`👁️  Результат: ${visibleProducts.length} видимых`);
-
-    if (sortBy === 'Цена ↑') {
-    visibleProducts.sort((a, b) => a.price - b.price);
-} else if (sortBy === 'Цена ↓') {
-    visibleProducts.sort((a, b) => b.price - a.price);
-} else if (sortBy === 'По популярности') {
-    visibleProducts.sort((a, b) => a.title.localeCompare(b.title));
-} else if (sortBy === 'По умолчанию') {
-    visibleProducts.sort((a, b) => a.originalIndex - b.originalIndex);
-}
-
-    const catalogGrid = document.querySelector('.catalog-grid');
-    if (catalogGrid) {
-    visibleProducts.forEach(product => {
-    catalogGrid.appendChild(product.element);
-});
-
-    products.filter(p => !visibleProducts.includes(p)).forEach(product => {
-    catalogGrid.appendChild(product.element);
-});
-}
-
-    if (foundCount) {
-    foundCount.textContent = visibleProducts.length;
-}
-
-    console.log('✅ Каталог обновлен!');
-}
+    const debounce = (fn, ms) => {
+        let t;
+        return function () {
+            clearTimeout(t);
+            t = setTimeout(fn, ms);
+        };
+    };
 
     if (filterModel) filterModel.addEventListener('change', updateCatalog);
     if (filterCategory) filterCategory.addEventListener('change', updateCatalog);
-    if (filterSku) {
-    filterSku.addEventListener('input', function() {
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(updateCatalog, 300);
-});
-}
-    if (filterPrice) {
-    filterPrice.addEventListener('input', function() {
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(updateCatalog, 300);
-});
-}
     if (sortSelect) sortSelect.addEventListener('change', updateCatalog);
 
-    if (foundCount) {
-    foundCount.textContent = products.length;
-}
+    if (filterSku) filterSku.addEventListener('input', debounce(updateCatalog, 200));
+    if (filterPrice) filterPrice.addEventListener('input', debounce(updateCatalog, 200));
 
+    if (foundCount) foundCount.textContent = products.length;
     updateCatalog();
-
-    console.log('🚀 ФИЛЬТР АКТИВИРОВАН!');
-    console.log('======================\n');
-
-    console.log('🧪 ТЕСТ КАТЕГОРИЙ:');
-    console.log('1. Выберите "Трансмиссия" → должен остаться "Редуктор главной передачи"');
-    console.log('2. Выберите "Лопасти" → должен остаться "Лопасть несущего винта"');
-    console.log('3. Выберите "Авиаоника" → должен остаться "Блок авионики NAV-X4"');
-    console.log('4. Выберите "Гидравлика" → должен остаться "Гидронасос HP-240"');
 }
