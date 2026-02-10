@@ -415,6 +415,57 @@
 <script src="/styles/js/form.js"></script>
 <script src="/styles/js/calc.js"></script>
 
+<script>
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('navOverlay');
+    const navClose = document.getElementById('navClose');
+
+    function closeMenu() {
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', closeMenu);
+    navClose.addEventListener('click', closeMenu);
+
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+
+</script>
+<script>
+
+    but1 = document.getElementById('but_catalog1').addEventListener('click',function () {
+     window.location.href = '/pages/catalog.html'
+    });
+    but2 = document.getElementById('but_catalog2').addEventListener('click',function (){
+        window.location.href= "/pages/catalog.html"
+    });
+    but3 = document.getElementById('but_news1').addEventListener('click',function() {
+        window.location.href = '/pages/detail/news_detail.html'
+    });
+    but4 = document.getElementById('but_news2').addEventListener('click',function() {
+       window.location.href = '/pages/detail/news_detail.html'
+    });
+    but5 = document.getElementById('but_news3').addEventListener('click',function() {
+       window.location.href = '/pages/detail/news_detail.html'
+    });
+
+    const buttons = document.querySelectorAll('[data-button="btn_product"]');
+
+    buttons.forEach(function(button, index) {
+       button.addEventListener('click',function() {
+           window.location.href = '/pages/modern.html'
+       })
+    });
+</script>
 <div class="promo-modal" id="promoModal">
     <div class="promo-overlay js-close-promo"></div>
 
@@ -470,8 +521,44 @@
         </div>
     </div>
 </div>
+<script>
 
+    ////////
 
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('promoModal');
+        const openBtn = document.querySelector('.js-open-promo');
+        const closeBtns = document.querySelectorAll('.js-close-promo');
+
+        openBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        const base = document.getElementById('calcBase');
+        const extra = document.getElementById('calcExtra');
+        const discountEl = document.getElementById('calcDiscount');
+        const totalEl = document.getElementById('calcTotal');
+
+        function recalc() {
+            const sum = (+base.value || 0) + (+extra.value || 0);
+            const discount = Math.round(sum * 0.15);
+            discountEl.textContent = discount ? `−${discount.toLocaleString()} ₽` : '—';
+            totalEl.textContent = sum ? `${(sum - discount).toLocaleString()} ₽` : '—';
+        }
+
+        [base, extra].forEach(i => i.addEventListener('input', recalc));
+    });
+    ///////
+
+</script>
 
 </body>
 </html>
