@@ -39,7 +39,8 @@
         </nav>
 
         <div class="header__actions">
-            <a href="/pages/reg.html" class="btn-primary nav-cta">
+            <a href="/pages/reg.html"
+               class="btn-primary nav-cta">
                 Регистрация
             </a>
 
@@ -53,13 +54,17 @@
 </header>
 
 <div class="container">
+<div class="page-header">
+    <div class="breadcrumbs">
+        <a href="/">Главная</a><span class="crumb-sep">→</span>
+        <span>Вход</span>
+    </div>
+</div>
+</div>
 
-        <div class="page-header">
-            <div class="breadcrumbs">
-                <a href="/">Главная</a><span class="crumb-sep">→</span>
-                <span>Вход</span>
-            </div>
-        </div>
+<div class="container">
+
+
 
     <div class="page-header">
         <h1>Вход в систему</h1>
@@ -178,177 +183,6 @@
     </div>
 </footer>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Элементы формы
-        const loginForm = document.getElementById('loginForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const errorMessage = document.getElementById('errorMessage');
-        const successMessage = document.getElementById('successMessage');
-        const togglePassword = document.getElementById('togglePassword');
-        const passwordInput = document.getElementById('password');
-        const usernameInput = document.getElementById('username');
-
-        // Переключение видимости пароля
-        togglePassword.addEventListener('click', function() {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            this.textContent = type === 'password' ? '👁' : '👁️‍🗨️';
-        });
-
-        // Валидация формы
-        function validateForm() {
-            const username = usernameInput.value.trim();
-            const password = passwordInput.value;
-
-            errorMessage.classList.remove('show');
-
-            if (!username) {
-                showError('Пожалуйста, введите логин или email');
-                usernameInput.classList.add('error');
-                return false;
-            }
-
-            if (!password) {
-                showError('Пожалуйста, введите пароль');
-                passwordInput.classList.add('error');
-                return false;
-            }
-
-            return true;
-        }
-
-        function showError(message) {
-            errorMessage.textContent = message;
-            errorMessage.classList.add('show');
-        }
-
-        function clearErrors() {
-            errorMessage.classList.remove('show');
-            usernameInput.classList.remove('error');
-            passwordInput.classList.remove('error');
-        }
-
-        // Очистка ошибок при вводе
-        usernameInput.addEventListener('input', clearErrors);
-        passwordInput.addEventListener('input', clearErrors);
-
-        // Обработка отправки формы
-        loginForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            if (!validateForm()) {
-                return;
-            }
-
-            // Показываем состояние загрузки
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = 'Вход... <div class="loading-spinner"></div>';
-
-            try {
-                // Симуляция запроса к серверу
-                const success = await simulateLoginRequest();
-
-                if (success) {
-                    // Показываем сообщение об успехе
-                    loginForm.style.display = 'none';
-                    document.querySelector('.login-links').style.display = 'none';
-                    document.querySelector('.social-login').style.display = 'none';
-                    document.querySelector('.divider').style.display = 'none';
-                    successMessage.classList.add('show');
-
-                    // Перенаправление через 2 секунды
-                    setTimeout(() => {
-                        window.location.href = 'https://passport.hsc-copter.com/dashboard';
-                    }, 2000);
-                } else {
-                    // Показываем сообщение об ошибке
-                    showError('Неверный логин или пароль. Проверьте введенные данные.');
-                }
-            } catch (error) {
-                console.error('Ошибка входа:', error);
-                showError('Произошла ошибка при входе. Пожалуйста, попробуйте позже.');
-            } finally {
-                // Восстанавливаем кнопку
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = 'Войти в систему <i>→</i>';
-            }
-        });
-
-        // Симуляция запроса к серверу
-        function simulateLoginRequest() {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    // 80% успешных входов, 20% ошибок для демонстрации
-                    const isSuccess = Math.random() > 0.2;
-
-                    if (isSuccess) {
-                        // Логируем данные в консоль
-                        console.log('Вход выполнен:', {
-                            username: usernameInput.value,
-                            timestamp: new Date().toISOString(),
-                            remember: document.getElementById('remember').checked
-                        });
-                        resolve(true);
-                    } else {
-                        reject(new Error('Неверные учетные данные'));
-                    }
-                }, 1500);
-            });
-        }
-
-        // Социальные кнопки (демо)
-        document.getElementById('googleLogin').addEventListener('click', function() {
-            alert('Вход через Google (демо)');
-        });
-
-        document.getElementById('yandexLogin').addEventListener('click', function() {
-            alert('Вход через Яндекс (демо)');
-        });
-
-        // Стили для спиннера загрузки
-        const style = document.createElement('style');
-        style.textContent = `
-            .loading-spinner {
-                display: inline-block;
-                width: 20px;
-                height: 20px;
-                border: 2px solid rgba(255, 255, 255, 0.3);
-                border-radius: 50%;
-                border-top-color: white;
-                animation: spin 1s linear infinite;
-            }
-
-            @keyframes spin {
-                to { transform: rotate(360deg); }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Навигационное меню (аналогично регистрации)
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('mobileNav');
-        const overlay = document.getElementById('navOverlay');
-        const navClose = document.getElementById('navClose');
-
-        function closeMenu() {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-        }
-
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            overlay.classList.toggle('active');
-        });
-
-        overlay.addEventListener('click', closeMenu);
-        navClose.addEventListener('click', closeMenu);
-
-        nav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-    });
-</script>
 
 <div class="consult-modal" id="consultModal">
     <div class="consult-overlay js-close-consult"></div>
@@ -410,5 +244,7 @@
 
 <script src="/styles/js/script.js"></script>
 <script src="/styles/js/form.js"></script>
+<script src="/styles/js/login.js"></script>
+
 </body>
 </html>

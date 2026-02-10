@@ -67,6 +67,54 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+const burger = document.getElementById('burger');
+const nav = document.getElementById('mobileNav');
+const overlay = document.getElementById('navOverlay');
+const navClose = document.getElementById('navClose');
+
+function closeMenu() {
+    nav.classList.remove('active');
+    overlay.classList.remove('active');
+}
+
+burger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    overlay.classList.toggle('active');
+});
+
+overlay.addEventListener('click', closeMenu);
+navClose.addEventListener('click', closeMenu);
+
+nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
+
+
+
+but1 = document.getElementById('but_catalog1').addEventListener('click',function () {
+    window.location.href = '/pages/catalog.html'
+});
+but2 = document.getElementById('but_catalog2').addEventListener('click',function (){
+    window.location.href= "/pages/catalog.html"
+});
+but3 = document.getElementById('but_news1').addEventListener('click',function() {
+    window.location.href = '/pages/detail/news_detail.html'
+});
+but4 = document.getElementById('but_news2').addEventListener('click',function() {
+    window.location.href = '/pages/detail/news_detail.html'
+});
+but5 = document.getElementById('but_news3').addEventListener('click',function() {
+    window.location.href = '/pages/detail/news_detail.html'
+});
+
+const buttons = document.querySelectorAll('[data-button="btn_product"]');
+
+buttons.forEach(function(button, index) {
+    button.addEventListener('click',function() {
+        window.location.href = '/pages/modern.html'
+    })
+});
+
 //     const burger = document.getElementById('burger');
 //     const nav = document.querySelector('.header__nav');
 //

@@ -114,9 +114,12 @@
                         <div class="promo-content">
                             <h3>Специальное предложение</h3>
                             <p>Получите скидку 15% на первую модернизацию</p>
-                            <button class="btn-primary btn-promo">Получить скидку</button>
+                            <button class="btn-primary btn-promo js-open-promo">
+                                Получить скидку
+                            </button>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -187,59 +190,58 @@
             </div>
         </div>
     </section>
-    <section class="section product-slider-section">
-        <div class="container">
-            <h2>Мы модернизируем:</h2>
+<section class="section product-slider-section">
+    <div class="container">
+        <h2>Мы модернизируем:</h2>
 
-            <div class="product-slider-wrapper">
-                <button class="slider-prev">&#10094;</button>
-                <div style="margin-top: 5px;" class="product-slider">
-                    <div class="product-slide">
-                        <img src="/styles/images/drone.jpg" alt="HSC Drone Pro">
-                        <h3>HSC Drone Pro</h3>
-                        <p>Промышленный дрон высокой дальности</p>
-                        <button class="btn-primary">Подробнее</button>
-                    </div>
-                    <div class="product-slide">
-                        <img src="/styles/images/dron2.png" alt="HSC Surveyor">
-                        <h3>HSC Surveyor</h3>
-                        <p>Аэросъемка и мониторинг</p>
-                        <button class="btn-primary">Подробнее</button>
-                    </div>
-                    <div class="product-slide">
-                        <img src="/styles/images/dron3.png" alt="HSC Tactical">
-                        <h3>HSC Tactical</h3>
-                        <p>Тактические задачи и безопасность</p>
-                        <button class="btn-primary">Подробнее</button>
-                    </div>
-                    <div class="product-slide">
-                        <img src="/styles/images/dron4.png" alt="HSC Agrodron">
-                        <h3>HSC Agrodron</h3>
-                        <p>Сельскохозяйственный мониторинг</p>
-                        <div class="product-price">от 890 000 ₽</div>
-                        <button class="btn-primary">Подробнее</button>
-                    </div>
-
-                    <div class="product-slide">
-                        <img src="/styles/images/dron5.png" alt="HSC Guardian">
-                        <h3>HSC Guardian</h3>
-                        <p>Система видеонаблюдения с БПЛА</p>
-                        <div class="product-price">от 1 250 000 ₽</div>
-                        <button class="btn-primary">Подробнее</button>
-                    </div>
-
-                    <div class="product-slide">
-                        <img src="/styles/images/drone.jpg" alt="HSC Cargo Light">
-                        <h3>HSC Cargo Light</h3>
-                        <p>Грузовой дрон (до 5 кг)</p>
-                        <div class="product-price">от 750 000 ₽</div>
-                        <button class="btn-primary">Подробнее</button>
-                    </div>
+        <div class="product-slider-wrapper">
+            <button class="slider-prev">&#10094;</button>
+            <div style="margin-top: 5px;" class="product-slider">
+                <div style="margin-top: 5px;" class="product-slide">
+                    <img src="/styles/images/mi-8.png" alt="Mi-8">
+                    <h3>Mi-8</h3>
+                    <p>Многоцелевой вертолет</p>
+                    <button data-button="btn_product" class="btn-primary">Подробнее</button>
                 </div>
-                <button class="slider-next">&#10095;</button>
+                <div style="margin-top: 5px;" class="product-slide">
+                    <img src="/styles/images/mi-17.png" alt="Mi-17">
+                    <h3>Mi-17</h3>
+                    <p>Военно-транспортный вертолет</p>
+                    <button data-button="btn_product" class="btn-primary">Подробнее</button>
+                </div>
+                <div style="margin-top: 5px;" class="product-slide">
+                    <img src="/styles/images/mi-26.png" alt="Mi-26">
+                    <h3>Mi-26</h3>
+                    <p>Тяжелый транспортный вертолет</p>
+                    <div class="product-price">от 1 500 000 ₽</div>
+                    <button data-button="btn_product" class="btn-primary">Подробнее</button>
+                </div>
+                <div style="margin-top: 5px;" class="product-slide">
+                    <img src="/styles/images/ka-32.png" alt="Ka-32">
+                    <h3>Ka-32</h3>
+                    <p>Многоцелевой вертолет для поисково-спасательных работ</p>
+                    <button data-button="btn_product" class="btn-primary">Подробнее</button>
+                </div>
+                <div style="margin-top: 5px;" class="product-slide">
+                    <img src="/styles/images/Ka-52.png" alt="Ka-52">
+                    <h3>Ka-52</h3>
+                    <p>Боевой вертолет</p>
+                    <div class="product-price">от 2 000 000 ₽</div>
+                    <button data-button="btn_product" class="btn-primary">Подробнее</button>
+                </div>
+                <div style="margin-top: 5px;" class="product-slide">
+                    <img src="/styles/images/ansat.png" alt="Ansat">
+                    <h3>Ansat</h3>
+                    <p>Легкий многоцелевой вертолет</p>
+                    <div class="product-price">от 600 000 ₽</div>
+                    <button data-button="btn_product" class="btn-primary">Подробнее</button>
+                </div>
+
             </div>
+            <button class="slider-next">&#10095;</button>
         </div>
-    </section>
+    </div>
+</section>
 
 
 <section class="section bg-soft">
@@ -247,24 +249,25 @@
         <h2>Новости компании</h2>
 
         <div class="grid-news">
-
             <article class="news-card">
                 <span class="news-date">29 Января 2026</span>
                 <h3>Запуск нового поколения дронов</h3>
                 <p>Компания HSC Copter представила новую линейку БПЛА...</p>
-
+                <button style="width: max-content;" id="but_news1" class="btn-primary">Подробнее</button>
             </article>
 
             <article class="news-card">
                 <span class="news-date">18 Января 2026</span>
                 <h3>Расширение партнерской сети</h3>
                 <p>Мы открыли представительства в новых регионах...</p>
+                <button style="width: max-content;" id="but_news2" class="btn-primary">Подробнее</button>
             </article>
 
             <article class="news-card">
                 <span class="news-date">03 Января 2026</span>
                 <h3>Контракт с госструктурами</h3>
                 <p>Подписано соглашение на поставку беспилотных систем...</p>
+                <button style="width: max-content;" id="but_news3" class="btn-primary">Подробнее</button>
             </article>
             <a style="color: #007bff;text-decoration: none;" href="/pages/news.html">Все новости</a>
         </div>
@@ -408,43 +411,69 @@
         </form>
     </div>
 </div>
-<script src="/styles/js/script.js">
-</script> <script src="/styles/js/form.js"></script>
+<script src="/styles/js/script.js"></script>
+<script src="/styles/js/form.js"></script>
+<script src="/styles/js/calc.js"></script>
 
 <script>
-    const burger = document.getElementById('burger');
-    const nav = document.getElementById('mobileNav');
-    const overlay = document.getElementById('navOverlay');
-    const navClose = document.getElementById('navClose');
-
-    function closeMenu() {
-        nav.classList.remove('active');
-        overlay.classList.remove('active');
-    }
-
-    burger.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        overlay.classList.toggle('active');
-    });
-
-    overlay.addEventListener('click', closeMenu);
-    navClose.addEventListener('click', closeMenu);
-
-    nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeMenu);
-    });
-
 
 </script>
-<script>
+<div class="promo-modal" id="promoModal">
+    <div class="promo-overlay js-close-promo"></div>
 
-    but1 = document.getElementById('but_catalog1').addEventListener('click',function () {
-     window.location.href = '/pages/catalog.html'
-    });
-    but2 = document.getElementById('but_catalog2').addEventListener('click',function (){
-        window.location.href= "/pages/catalog.html"
-    });
-</script>
+    <div class="promo-window">
+        <button class="promo-close js-close-promo">✕</button>
+
+        <h2 class="promo-title">Скидка −15% на первую модернизацию</h2>
+        <p class="promo-subtitle">
+            Оставьте заявку или рассчитайте стоимость с учётом скидки
+        </p>
+
+        <div class="promo-grid">
+            <form class="promo-form" id="promoForm">
+                <div class="promo-field">
+                    <input type="text" name="Name" placeholder="Ваше имя*" required>
+                    <div class="error-message" id="promoNameError"></div>
+                </div>
+
+                <div class="promo-field">
+                    <input type="tel" name="Phone" placeholder="Телефон*" required>
+                    <div class="error-message" id="promoPhoneError"></div>
+                </div>
+
+                <div class="promo-field">
+                    <input type="email" name="Email" placeholder="E-mail">
+                    <div class="error-message" id="promoEmailError"></div>
+                </div>
+
+                <div class="promo-field">
+                    <input type="text" name="Model" placeholder="Модель вертолёта">
+                    <div class="error-message" id="promoModelError"></div>
+                </div>
+
+                <div class="promo-field" style="grid-column: 1 / -1;">
+                    <textarea name="Message" placeholder="Комментарий"></textarea>
+                    <div class="error-message" id="promoMessageError"></div>
+                </div>
+
+                <button class="btn-primary" type="submit">Зафиксировать скидку</button>
+            </form>
+
+            <div class="promo-calc">
+                <h4>Калькулятор</h4>
+
+                <input id="calcBase" type="number" placeholder="Базовая цена, ₽">
+                <input id="calcExtra" type="number" placeholder="Доп. работы, ₽">
+
+                <div class="promo-calc-result">
+                    <div>Скидка 15%: <strong id="calcDiscount">—</strong></div>
+                    <div>Итого: <strong id="calcTotal">—</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 </body>

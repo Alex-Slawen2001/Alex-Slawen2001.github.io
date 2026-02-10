@@ -351,28 +351,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     clearAllErrors();
 });
-
-// Для реальной отправки  simulateServerRequest на:
-/*
-async function sendRealRequest(formData) {
-    try {
-        const response = await fetch('/ajax/message/send', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error('Ошибка сервера: ' + response.status);
-        }
-
-        const data = await response.json();
-        return data.success || true;
-    } catch (error) {
-        console.error('Ошибка отправки:', error);
-        throw error;
-    }
-}
-*/ 
