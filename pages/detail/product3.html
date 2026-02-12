@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог</title>
+    <title>HSC Copter — Товар</title>
 
     <meta name="description" content="HSC Copter — профессиональные беспилотные решения и дроны">
     <link rel="shortcut icon" href="/styles/images/hsc-favicon_all.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/css/styles.css">
+    <link rel="stylesheet" href="/styles/css/product.css">
     <link rel="stylesheet" href="/styles/css/form.css">
-    <link rel="stylesheet" href="/styles/css/catalog.css">
-
 </head>
 <body>
 <header class="header">
@@ -56,137 +55,164 @@
     <div class="nav-overlay" id="navOverlay"></div>
 </header>
 
+<body>
 
 <div class="container">
 
-    <div class="page-header">
-        <div class="breadcrumbs">
-            <a href="/">Главная</a><span class="crumb-sep">→</span>
-            <a href="/pages/catalog.html">Каталог</a><span class="crumb-sep">→</span>
-            <span>Запчасти</span>
-        </div>
-        <h1>Каталог запчастей для вертолётов</h1>
+    <div class="breadcrumbs">
+        <a href="/">Главная</a> → <a href="/pages/catalog.html">Каталог</a> → <span>Авионика</span>
     </div>
 
+    <div class="product-layout">
 
-    <div class="catalog-layout">
-
-
-        <aside class="filters">
-
-            <h3>Фильтры</h3>
-
-            <div class="filter-group">
-                <label>Модель вертолёта</label>
-                <select>
-                    <option>Все модели</option>
-                    <option>Mi-8</option>
-                    <option>Mi-17</option>
-                    <option>Mi-26</option>
-                    <option>Ka-32</option>
-                    <option>Ansat</option>
-                </select>
+        <div class="gallery">
+            <div class="gallery-main">
+                <img src="/styles/images/block_avioniki.webp" alt="Блок авионики NAV-X4" id="mainProductImage">
             </div>
 
-            <div class="filter-group">
-                <label>Номер детали (SKU)</label>
-                <input type="text" placeholder="Введите артикул">
-            </div>
-
-            <div class="filter-group">
-                <label>Цена до</label>
-                <input type="number" placeholder="₽">
-            </div>
-
-        </aside>
-        <section>
-            <div class="catalog-toolbar">
-                <div>Найдено: <strong>124</strong></div>
-                <div class="sort">
-                    <select>
-                        <option>По умолчанию</option>
-                        <option>Цена ↑</option>
-                        <option>Цена ↓</option>
-                        <option>По популярности</option>
-                    </select>
+            <div class="gallery-thumbs">
+                <div class="thumb active" data-image="/styles/images/block_avioniki.webp">
+                    <img src="/styles/images/block_avioniki.webp" alt="Вид 1">
+                </div>
+                <div class="thumb" data-image="/styles/images/block_avioniki_1.png">
+                    <img src="/styles/images/block_avioniki_1.png" alt="Вид 2">
+                </div>
+                <div class="thumb" data-image="/styles/images/block_avioniki_2.png">
+                    <img src="/styles/images/block_avioniki_2.png" alt="Вид 3">
+                </div>
+                <div class="thumb" data-image="/styles/images/block_avioniki_3.png">
+                    <img src="/styles/images/block_avioniki_3.png" alt="Разъёмы">
+                </div>
+                <div class="thumb" data-image="/styles/images/block_avioniki_4.png">
+                    <img src="/styles/images/block_avioniki_4.png" alt="Комплектация">
                 </div>
             </div>
+        </div>
 
-            <div class="catalog-grid">
 
-                <article class="product-card">
-                    <div class="product-image"><img class="img_product" src="/styles/images/reductor.jpg"></div>
-                    <div class="product-body">
-                        <div class="product-title">Редуктор главной передачи</div>
-                        <div class="product-sku">SKU: HSC-MI8-RGX01</div>
-                        <div class="product-attrs">
-                            Модель: Mi-8<br>
-                            Категория: Трансмиссия<br>
-                            Наличие: В наличии
-                        </div>
-                        <div class="product-price">₽ 1 450 000</div>
-                        <a class="btn-primary" style="text-decoration: none;color: white;text-align: center" href="/pages/detail/product.html">Посмотреть</a>
-                    </div>
-                </article>
+        <div class="product-info">
+            <h1>Блок авионики NAV-X4</h1>
+            <div class="sku">SKU: HSC-NAVX4-AVN01</div>
 
-                <article class="product-card">
-                    <div class="product-image"><img style="width: 70%;" class="img_product" src="/styles/images/lopast_vinta.png"></div>
-                    <div class="product-body">
-                        <div class="product-title">Лопасть несущего винта</div>
-                        <div class="product-sku">SKU: HSC-MI17-BLD02</div>
-                        <div class="product-attrs">
-                            Модель: Mi-17<br>
-                            Категория: Лопасти<br>
-                            Наличие: Под заказ
-                        </div>
-                        <div class="product-price">₽ 980 000</div>
-                        <a class="btn-primary" style="text-decoration: none;color: white;text-align: center" href="/pages/detail/product2.html">Посмотреть</a>
-                    </div>
-                </article>
+            <div class="price">₽ 320 000</div>
 
-                <article class="product-card">
-                    <div class="product-image"><img class="img_product" src="/styles/images/block_avioniki.webp"></div>
-                    <div class="product-body">
-                        <div class="product-title">Блок авионики NAV-X4</div>
-                        <div class="product-sku">SKU: HSC-NAV-X4</div>
-                        <div class="product-attrs">
-                            Универсальный<br>
-                            Категория: Авионика<br>
-                            Наличие: В наличии
-                        </div>
-                        <div class="product-price">₽ 320 000</div>
-                        <a class="btn-primary" style="text-decoration: none;color: white;text-align: center" href="/pages/detail/product3.html">Посмотреть</a>
-                    </div>
-                </article>
+            <div class="stock">В наличии</div>
 
-                <article class="product-card">
-                    <div class="product-image"><img style="height: 100%;" class="img_product" src="/styles/images/gidro.png"></div>
-                    <div class="product-body">
-                        <div class="product-title">Гидронасос HP-240</div>
-                        <div class="product-sku">SKU: HSC-HYD-240</div>
-                        <div class="product-attrs">
-                            Категория: Гидравлика<br>
-                            Наличие: В наличии
-                        </div>
-                        <div class="product-price">₽ 210 000</div>
-                        <a class="btn-primary" style="text-decoration: none;color: white;text-align: center" href="/pages/detail/product4.html">Посмотреть</a>
-                    </div>
-                </article>
-
+            <div class="actions">
+                <button class="btn-primary">В корзину</button>
+                <button class="btn-outline">Запросить КП</button>
             </div>
 
-            <div class="pagination">
-                <a href="#">←</a>
-                <a href="#" class="active">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">→</a>
+            <div class="attributes">
+                <div class="attr-row"><span>Категория</span><span>Авионика</span></div>
+                <div class="attr-row"><span>Назначение</span><span>Навигация / обмен данными</span></div>
+                <div class="attr-row"><span>Интерфейсы</span><span>ARINC / CAN / RS-485</span></div>
+                <div class="attr-row"><span>Питание</span><span>27 В DC</span></div>
+                <div class="attr-row"><span>Гарантия</span><span>12 месяцев</span></div>
             </div>
-
-        </section>
-
+        </div>
     </div>
+
+
+    <div class="tabs">
+        <div class="tab-buttons">
+            <div class="tab-btn active" onclick="openTab(0)">Описание</div>
+            <div class="tab-btn" onclick="openTab(1)">Характеристики</div>
+            <div class="tab-btn" onclick="openTab(2)">Совместимость</div>
+            <div class="tab-btn" onclick="openTab(3)">Документы</div>
+        </div>
+
+        <div class="tab-content active">
+            <p>Блок авионики NAV-X4 — цифровой модуль для модернизации бортового оборудования вертолётов. Предназначен для интеграции навигационных источников, обмена данными с бортовыми системами и повышения точности/стабильности навигации.</p>
+            <p>Используется в проектах обновления кабины и внедрения современных цифровых систем. Обеспечивает устойчивую работу в широком диапазоне температур и совместим с типовыми интерфейсами авиационного оборудования.</p>
+        </div>
+
+        <div class="tab-content">
+            <ul>
+                <li><strong>Тип:</strong> цифровой блок авионики</li>
+                <li><strong>Питание:</strong> 27 В DC</li>
+                <li><strong>Интерфейсы:</strong> ARINC 429 / CAN / RS-485</li>
+                <li><strong>Рабочая температура:</strong> −40°С — +55°С</li>
+                <li><strong>Масса:</strong> 3.2 кг</li>
+            </ul>
+        </div>
+
+        <div class="tab-content">
+            <div class="compatibility-list">
+                <div class="compatibility-item">Mi-8T</div>
+                <div class="compatibility-item">Mi-8MTV</div>
+                <div class="compatibility-item">Mi-17</div>
+                <div class="compatibility-item">Mi-171</div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <ul>
+                <li>Паспорт изделия (PDF)</li>
+                <li>Схема подключения</li>
+                <li>Инструкция по установке</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="related-grid">
+        <h2>Похожие товары</h2>
+        <div style="margin-bottom: 15px;" class="related-items">
+            <div class="related-card">
+                <div class="related-image">
+                    <img src="/styles/images/lopast_vinta.png" alt="Лопасть несущего винта">
+                </div>
+                <div class="related-title">Лопасть несущего винта Mi-8</div>
+                <div class="price">₽ 980 000</div>
+            </div>
+            <div class="related-card">
+                <div class="related-image">
+                    <img src="/styles/images/gidro.png" alt="Гидронасос HP-240">
+                </div>
+                <div class="related-title">Гидронасос HP-240 для Mi-8/17</div>
+                <div class="price">₽ 210 000</div>
+            </div>
+            <div class="related-card">
+                <div class="related-image">
+                    <img src="/styles/images/reductor.jpg" alt="Редуктор главной передачи Mi-8">
+                </div>
+                <div class="related-title">Редуктор главной передачи Mi-8</div>
+                <div class="price">₽ 1 450 000</div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<script>
+    function openTab(index) {
+        document.querySelectorAll('.tab-btn').forEach((btn,i)=>{
+            btn.classList.toggle('active', i === index)
+        })
+        document.querySelectorAll('.tab-content').forEach((tab,i)=>{
+            tab.classList.toggle('active', i === index)
+        })
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainImg = document.getElementById('mainProductImage');
+        const thumbs = document.querySelectorAll('.thumb');
+
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                // Убираем активный класс
+                thumbs.forEach(t => t.classList.remove('active'));
+                // Добавляем активный класс текущей
+                this.classList.add('active');
+                // Меняем основное изображение
+                const newImgSrc = this.getAttribute('data-image');
+                if (newImgSrc) {
+                    mainImg.src = newImgSrc;
+                }
+            });
+        });
+    });
+</script>
 
 <footer class="footer">
     <div class="container footer-grid">
@@ -316,7 +342,6 @@
 </div>
 <script src="/styles/js/script.js"></script>
 <script src="/styles/js/form.js"></script>
-<script src="/styles/js/filter.js"></script>
 
 <script>
     const burger = document.getElementById('burger');

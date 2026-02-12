@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модернизация дронов</title>
+
+    <meta name="description" content="HSC Copter — модернизация дронов: повышение дальности, устойчивости, полезной нагрузки и функциональности БПЛА">
+    <link rel="shortcut icon" href="/styles/images/hsc-favicon_all.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/css/styles.css">
+    <link rel="stylesheet" href="/styles/css/modern.css">
+    <link rel="stylesheet" href="/styles/css/form.css">
+</head>
+<body>
+<header class="header">
+    <div class="container header-inner">
+
+        <div class="logo">
+            <a href="/">
+                <img style="width: 50%;" src="/styles/images/logo.png" alt="HSC Copter">
+            </a>
+        </div>
+
+        <nav class="nav" id="mobileNav">
+
+            <button class="nav-close" id="navClose" aria-label="Закрыть меню">
+                <span></span><span></span>
+            </button>
+
+            <a href="/" class="nav__link">Главная</a>
+            <a href="/pages/about.html" class="nav__link">О нас</a>
+            <a href="/pages/catalog.html" class="nav__link">Продукты</a>
+            <a href="/pages/news.html" class="nav__link">Новости</a>
+            <a href="/pages/modern.html" class="nav__link">Модернизация</a>
+            <a href="/pages/contacts.html" class="nav__link">Контакты</a>
+            <a href="/pages/reg.html" class="nav__link reg_button">Регистрация</a>
+            <a href="/pages/login.html" class="nav__link login_button">Войти</a>
+        </nav>
+
+        <div class="header__actions">
+            <a href="/pages/reg.html" class="btn-primary nav-cta">
+                Регистрация
+            </a>
+
+            <button class="burger" id="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+</header>
+
+<div class="container">
+    <div class="page-header">
+        <div class="breadcrumbs">
+            <a href="/">Главная</a><span class="crumb-sep">→</span>
+            <span>Модернизация дронов</span>
+        </div>
+    </div>
+</div>
+
+<div class="hsc-site-content">
+    <div class="container">
+        <div class="main-content">
+
+            <section class="page-hero">
+                <h1 class="page-hero__title">Модернизация дронов</h1>
+                <p class="page-hero__subtitle">
+                    Комплексная модернизация БПЛА: увеличение дальности и времени полёта,
+                    усиление связи, дооснащение полезной нагрузкой и адаптация под ваши задачи.
+                </p>
+            </section>
+
+            <div class="text-content">
+
+                <div class="cta-banner">
+                    <div class="cta-banner__content">
+                        <div class="cta-banner__text">
+                            <h3 class="cta-banner__title">Нужна консультация по модернизации БПЛА?</h3>
+                            <p class="cta-banner__description">
+                                Подберём пакет доработок под вашу задачу: мониторинг, инспекция, безопасность, доставка,
+                                тепловизионный поиск или агроаналитика.
+                            </p>
+                        </div>
+                        <div class="cta-banner__contact">
+                            <a href="tel:+74956605560" class="contact-badge">
+                                <span class="contact-badge__icon">📞</span>
+                                <span class="contact-badge__text">+7 (495) 660-55-60</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header">Выберите семейство дрона</div>
+
+                <div class="helicopter-grid">
+
+                    <div class="helicopter-card">
+                        <a href="#" class="helicopter-card__link">
+                            <div class="helicopter-card__image">
+                                <div class="image-fill-container">
+                                    <img style="margin-top: 35px;" src="/styles/images/settings.png" alt="HSC Drone Pro">
+                                </div>
+                            </div>
+                            <div class="helicopter-card__content">
+                                <h3 class="helicopter-card__title">HSC Drone Pro</h3>
+                                <p class="helicopter-card__description">
+                                    Промышленная платформа высокой дальности. Модернизация: усиление канала связи,
+                                    увеличение времени полёта, защита электроники и подготовка под тяжёлую полезную нагрузку.
+                                </p>
+                                <div class="helicopter-card__features">
+                                    <span class="feature-tag"><span class="feature-tag__icon">📡</span>Связь</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">🔋</span>Автономность</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">🧰</span>Оснащение</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="helicopter-card">
+                        <a href="#" class="helicopter-card__link">
+                            <div class="helicopter-card__image">
+                                <div class="image-fill-container">
+                                    <img style="margin-top: 35px;" src="/styles/images/more_set.png" alt="HSC Surveyor">
+                                </div>
+                            </div>
+                            <div class="helicopter-card__content">
+                                <h3 class="helicopter-card__title">HSC Surveyor</h3>
+                                <p class="helicopter-card__description">
+                                    Аэросъёмка и мониторинг. Модернизация: стабилизация подвеса, повышение точности геопривязки,
+                                    улучшение оптики, настройка маршрутов и режимов облёта.
+                                </p>
+                                <div class="helicopter-card__features">
+                                    <span class="feature-tag"><span class="feature-tag__icon">📷</span>Камера</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">🛰</span>Навигация</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">🧭</span>Маршруты</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="helicopter-card">
+                        <a href="#" class="helicopter-card__link">
+                            <div class="helicopter-card__image">
+                                <div class="image-fill-container">
+                                    <img style="margin-top: 35px;" src="/styles/images/img_2.png" alt="HSC Tactical">
+                                </div>
+                            </div>
+                            <div class="helicopter-card__content">
+                                <h3 class="helicopter-card__title">HSC Tactical</h3>
+                                <p class="helicopter-card__description">
+                                    Тактические задачи и безопасность. Модернизация: защищённые каналы управления,
+                                    ночные режимы, интеграция полезной нагрузки, повышение устойчивости к помехам.
+                                </p>
+                                <div class="helicopter-card__features">
+                                    <span class="feature-tag"><span class="feature-tag__icon">🛡</span>Защита</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">🌙</span>Ночь</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">⚙</span>Настройка</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="helicopter-card">
+                        <a href="#" class="helicopter-card__link">
+                            <div class="helicopter-card__image">
+                                <div class="image-fill-container">
+                                    <img style="margin-top: 35px;" src="/styles/images/generator.png" alt="HSC Agrodron">
+                                </div>
+                            </div>
+                            <div class="helicopter-card__content">
+                                <h3 class="helicopter-card__title">HSC Agrodron</h3>
+                                <p class="helicopter-card__description">
+                                    Агромониторинг и анализ. Модернизация: мультиспектральные сенсоры, настройка режимов
+                                    облёта полей, увеличение полезной нагрузки и оптимизация автономности.
+                                </p>
+                                <div class="helicopter-card__features">
+                                    <span class="feature-tag"><span class="feature-tag__icon">🌾</span>Agro</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">📈</span>Аналитика</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">🔋</span>Полёт</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="helicopter-card">
+                        <a href="#" class="helicopter-card__link">
+                            <div class="helicopter-card__image">
+                                <div class="image-fill-container">
+                                    <img style="margin-top: 35px;" src="/styles/images/bpla.png" alt="HSC Guardian">
+                                </div>
+                            </div>
+                            <div class="helicopter-card__content">
+                                <h3 class="helicopter-card__title">HSC Guardian</h3>
+                                <p class="helicopter-card__description">
+                                    Видеонаблюдение с БПЛА. Модернизация: интеграция PTZ-камер, увеличение дальности передачи видео,
+                                    настройка сценариев патрулирования и оповещения.
+                                </p>
+                                <div class="helicopter-card__features">
+                                    <span class="feature-tag"><span class="feature-tag__icon">🎥</span>Видео</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">📡</span>Канал</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">🚨</span>Оповещение</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="helicopter-card">
+                        <a href="#" class="helicopter-card__link">
+                            <div class="helicopter-card__image">
+                                <div class="image-fill-container">
+                                    <img style="margin-top: 35px;" src="/styles/images/helicopter.png" alt="HSC Cargo Light">
+                                </div>
+                            </div>
+                            <div class="helicopter-card__content">
+                                <h3 class="helicopter-card__title">HSC Cargo Light</h3>
+                                <p class="helicopter-card__description">
+                                    Грузовой дрон (до 5 кг). Модернизация: усиление подвеса и креплений, оптимизация питания,
+                                    настройка безопасных режимов доставки и возврата.
+                                </p>
+                                <div class="helicopter-card__features">
+                                    <span class="feature-tag"><span class="feature-tag__icon">📦</span>Доставка</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">🧷</span>Подвес</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">🧯</span>Безопасность</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="helicopter-card">
+                        <a href="#" class="helicopter-card__link">
+                            <div class="helicopter-card__image">
+                                <div class="image-fill-container">
+                                    <img style="margin-top: 35px;" src="/styles/images/set.png" alt="HSC Inspector">
+                                </div>
+                            </div>
+                            <div class="helicopter-card__content">
+                                <h3 class="helicopter-card__title">HSC Inspector</h3>
+                                <p class="helicopter-card__description">
+                                    Инспекция промышленных объектов. Модернизация: высокоточная стабилизация, защищённый видеоканал,
+                                    датчики, режимы безопасного облёта и автоматические отчёты.
+                                </p>
+                                <div class="helicopter-card__features">
+                                    <span class="feature-tag"><span class="feature-tag__icon">🏭</span>Инспекция</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">📊</span>Отчёты</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">🛰</span>Точность</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="helicopter-card">
+                        <a href="#" class="helicopter-card__link">
+                            <div class="helicopter-card__image">
+                                <div class="image-fill-container">
+                                    <img style="margin-top: 35px;" src="/styles/images/bpla2.png" alt="HSC Thermal">
+                                </div>
+                            </div>
+                            <div class="helicopter-card__content">
+                                <h3 class="helicopter-card__title">HSC Thermal</h3>
+                                <p class="helicopter-card__description">
+                                    Тепловизионные поисковые операции. Модернизация: тепловизоры/оптика, алгоритмы поиска,
+                                    увеличение времени полёта и стабильности передачи видео.
+                                </p>
+                                <div class="helicopter-card__features">
+                                    <span class="feature-tag"><span class="feature-tag__icon">🔥</span>Тепловизор</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">🧠</span>Алгоритмы</span>
+                                    <span class="feature-tag"><span class="feature-tag__icon">📡</span>Видео</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div style="text-align: center; margin: 40px 0 30px;">
+                    <a href="#" class="view-all-link">
+                        Посмотреть все семейства дронов
+                    </a>
+                </div>
+
+                <div class="info-panel">
+                    <h3 class="info-panel__title">О программе модернизации БПЛА</h3>
+                    <div class="info-panel__content">
+                        <p>
+                            <strong>HSC Copter</strong> развивает направление модернизации беспилотных платформ:
+                            от дооснащения сенсорами и полезной нагрузкой до глубокой переработки электроники, связи и программных модулей.
+                        </p>
+                        <p style="margin-top: 15px;">
+                            Мы предлагаем типовые пакеты модернизации (связь/автономность/полезная нагрузка) и индивидуальные решения
+                            под эксплуатацию, климат и специфику объектов. Следите за обновлениями и новыми техническими решениями.
+                        </p>
+                    </div>
+                </div>
+
+                <p style="margin-top: 30px; text-align: center; color: var(--text-secondary);">
+                    <em>Точность. Надёжность. Контроль.</em>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.helicopter-card__link');
+
+        cards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                console.log('Selected drone:', this.closest('.helicopter-card').querySelector('.helicopter-card__title').textContent);
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+<footer class="footer">
+    <div class="container footer-grid">
+
+        <div class="footer-brand">
+            <strong class="footer-logo">HSC Copter</strong>
+            <p class="footer-desc">
+                Профессиональные беспилотные технологии и решения для промышленности
+            </p>
+        </div>
+
+        <div class="footer-nav">
+            <h4>Навигация</h4>
+            <a href="/">Главная</a>
+            <a href="/pages/catalog.html">Каталог</a>
+            <a href="/pages/news.html">Новости</a>
+            <a href="/pages/about.html">О нас</a>
+            <a href="/pages/document.html">Документация</a>
+            <a href="/pages/obuchenie.html">Обучение</a>
+        </div>
+
+        <div class="footer-contacts">
+            <h4>Контакты</h4>
+            <a href="mailto:info@hsc-copter.com">info@hsc-copter.com</a>
+            <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+            <span class="footer-note">Пн–Пт, 9:00–18:00</span>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 HSC Copter. Все права защищены
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const modal = document.getElementById('consultModal');
+
+            if (!modal) {
+                console.warn('consultModal not found');
+                return;
+            }
+            document.querySelectorAll('.js-open-consult').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            document.querySelectorAll('.js-close-consult').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            const refreshBtn = document.getElementById('refreshCaptcha');
+            const captchaImg = document.getElementById('captchaImage');
+
+            if (refreshBtn && captchaImg) {
+                refreshBtn.addEventListener('click', () => {
+                    captchaImg.src = '/ajax/captcha/image/' + Date.now();
+                });
+            }
+        });
+    </script>
+</footer>
+
+<div class="consult-modal" id="consultModal">
+    <div class="consult-overlay js-close-consult"></div>
+
+    <div class="consult-window">
+        <button class="consult-close js-close-consult">✕</button>
+
+        <h2 class="consult-title">
+            Запросить консультацию
+        </h2>
+
+        <p class="consult-subtitle">
+            Оставьте сообщение — мы свяжемся с вами в ближайшее время
+        </p>
+
+        <form id="consultForm">
+            <div class="consult-grid">
+                <div class="consult-field full">
+                    <textarea name="message" id="messageField" placeholder="Введите ваше сообщение*" required></textarea>
+                    <div class="error-message" id="messageError"></div>
+                </div>
+
+                <div class="consult-field">
+                    <input type="text" name="name" id="nameField" placeholder="Ваше имя*" required>
+                    <div class="error-message" id="nameError"></div>
+                </div>
+
+                <div class="consult-field">
+                    <input type="email" name="email" id="emailField" placeholder="Ваш e-mail">
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="consult-field">
+                    <input type="tel" name="phone" id="phoneField" placeholder="Телефон">
+                    <div class="error-message" id="phoneError"></div>
+                </div>
+            </div>
+
+            <button type="submit" class="consult-submit" id="submitBtn">
+                Отправить запрос
+            </button>
+
+            <div class="form-message" id="successMessage" style="display: none;">
+                <div class="success-icon">✓</div>
+                <h3>Заявка успешно отправлена!</h3>
+                <p>Мы свяжемся с вами в ближайшее время.</p>
+                <button type="button" class="close-message-btn js-close-consult">Закрыть</button>
+            </div>
+
+            <div class="form-message error" id="errorMessage" style="display: none;">
+                <div class="error-icon">⚠</div>
+                <h3>Произошла ошибка</h3>
+                <p id="errorText">Пожалуйста, попробуйте позже.</p>
+                <button type="button" class="retry-btn">Попробовать снова</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/styles/js/script.js"></script>
+<script src="/styles/js/form.js"></script>
+
+<script>
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('navOverlay');
+    const navClose = document.getElementById('navClose');
+
+    function closeMenu() {
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', closeMenu);
+    navClose.addEventListener('click', closeMenu);
+
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+</script>
+
+</body>
+</html>

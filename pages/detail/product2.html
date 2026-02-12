@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSC Copter — Товар</title>
+
+    <meta name="description" content="Лопасть несущего винта Mi-8 — оригинальная запчасть для вертолётов серии Mi-8" />
+    <link rel="shortcut icon" href="/styles/images/hsc-favicon_all.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/css/styles.css" />
+    <link rel="stylesheet" href="/styles/css/product.css" />
+    <link rel="stylesheet" href="/styles/css/form.css" />
+</head>
+
+<body>
+<header class="header">
+    <div class="container header-inner">
+        <div class="logo">
+            <a href="/">
+                <img style="width: 50%;" src="/styles/images/logo.png" alt="HSC Copter" />
+            </a>
+        </div>
+
+        <nav class="nav" id="mobileNav">
+            <button class="nav-close" id="navClose" aria-label="Закрыть меню">
+                <span></span><span></span>
+            </button>
+
+            <a href="/" class="nav__link">Главная</a>
+            <a href="/pages/about.html" class="nav__link">О нас</a>
+            <a href="/pages/catalog.html" class="nav__link">Каталог</a>
+            <a href="/pages/news.html" class="nav__link">Новости</a>
+            <a href="/pages/modern.html" class="nav__link">Модернизация</a>
+            <a href="/pages/contacts.html" class="nav__link">Контакты</a>
+            <a href="/pages/reg.html" class="nav__link reg_button">Регистрация</a>
+            <a href="/pages/login.html" class="nav__link login_button">Войти</a>
+        </nav>
+
+        <div class="header__actions">
+            <a href="/pages/reg.html" class="btn-primary nav-cta">Регистрация</a>
+
+            <button class="burger" id="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+</header>
+
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="/">Главная</a> → <a href="/pages/catalog.html">Каталог</a> → <span>Лопасть несущего винта</span>
+    </div>
+
+    <div class="product-layout">
+        <!-- GALLERY -->
+        <div class="gallery">
+            <div class="gallery-main">
+                <!-- Поставь свою реальную картинку -->
+                <img src="/styles/images/lopast_vinta.png" alt="Лопасть несущего винта Mi-8" id="mainProductImage" />
+            </div>
+
+            <div class="gallery-thumbs">
+                <!-- Меняй src на реальные файлы — логика берет src миниатюры -->
+                <button class="thumb active" type="button">
+                    <img src="/styles/images/lopast_vinta.png" alt="Вид 1" />
+                </button>
+
+                <button class="thumb" type="button">
+                    <img src="/styles/images/lopast_vinta_2.png" alt="Вид 2" />
+                </button>
+
+                <button class="thumb" type="button">
+                    <img src="/styles/images/lopast_vinta_3.png" alt="Вид 3" />
+                </button>
+
+                <button class="thumb" type="button">
+                    <img src="/styles/images/lopast_vinta_4.png" alt="Крепление" />
+                </button>
+
+                <button class="thumb" type="button">
+                    <img src="/styles/images/lopast_vinta_5.png" alt="Маркировка" />
+                </button>
+            </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="product-info">
+            <h1>Лопасть несущего винта Mi-8</h1>
+            <div class="sku">SKU: HSC-MI8-MRB01</div>
+
+            <div class="price">₽ 980 000</div>
+
+            <div class="stock">В наличии</div>
+
+            <div class="actions">
+                <button class="btn-primary">В корзину</button>
+                <button class="btn-outline">Запросить КП</button>
+            </div>
+
+            <div class="attributes">
+                <div class="attr-row"><span>Категория</span><span>Несущий винт</span></div>
+                <div class="attr-row"><span>Модель</span><span>Mi-8 / Mi-17</span></div>
+                <div class="attr-row"><span>Материал</span><span>Композиционный ламинат</span></div>
+                <div class="attr-row"><span>Длина</span><span>≈ 7.3 м</span></div>
+                <div class="attr-row"><span>Гарантия</span><span>12 месяцев</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+        <div class="tab-buttons">
+            <div class="tab-btn active" onclick="openTab(0)">Описание</div>
+            <div class="tab-btn" onclick="openTab(1)">Характеристики</div>
+            <div class="tab-btn" onclick="openTab(2)">Совместимость</div>
+            <div class="tab-btn" onclick="openTab(3)">Документы</div>
+        </div>
+
+        <div class="tab-content active">
+            <p>
+                Лопасть несущего винта для вертолётов серии Mi-8 — ключевой элемент несущей системы, обеспечивающий подъёмную силу,
+                устойчивость и управляемость. Изделие поставляется в заводском исполнении и соответствует авиационным требованиям
+                по прочности и ресурсу.
+            </p>
+            <p>
+                Рекомендуется установка и балансировка в специализированной организации с соблюдением технологических карт и
+                регламентов производителя.
+            </p>
+        </div>
+
+        <div class="tab-content">
+            <ul>
+                <li><strong>Тип:</strong> лопасть несущего винта</li>
+                <li><strong>Материал:</strong> композит / ламинат</li>
+                <li><strong>Длина:</strong> ~ 7.3 м (зависит от модификации)</li>
+                <li><strong>Ресурс:</strong> по регламенту эксплуатации воздушного судна</li>
+                <li><strong>Комплектность:</strong> 1 шт. (поставка поштучно)</li>
+            </ul>
+        </div>
+
+        <div class="tab-content">
+            <div class="compatibility-list">
+                <div class="compatibility-item">Mi-8T</div>
+                <div class="compatibility-item">Mi-8MTV</div>
+                <div class="compatibility-item">Mi-8AMT</div>
+                <div class="compatibility-item">Mi-17</div>
+                <div class="compatibility-item">Mi-171</div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <ul>
+                <li>Паспорт изделия (PDF)</li>
+                <li>Сертификат соответствия</li>
+                <li>Инструкция по транспортировке и хранению</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- RELATED -->
+    <div class="related-grid">
+        <h2>Похожие товары</h2>
+
+        <div style="margin-bottom: 15px;" class="related-items">
+            <div class="related-card">
+                <div class="related-image">
+                    <img src="/styles/images/reductor.jpg" alt="Редуктор главной передачи Mi-8" />
+                </div>
+                <div class="related-title">Редуктор главной передачи Mi-8</div>
+                <div class="price">₽ 1 450 000</div>
+            </div>
+
+            <div class="related-card">
+                <div class="related-image">
+                    <img src="/styles/images/gidro.png" alt="Гидронасос HP-240" />
+                </div>
+                <div class="related-title">Гидронасос HP-240 для Mi-8/17</div>
+                <div class="price">₽ 210 000</div>
+            </div>
+
+            <div class="related-card">
+                <div class="related-image">
+                    <img src="/styles/images/block_avioniki.webp" alt="Блок авионики NAV-X4" />
+                </div>
+                <div class="related-title">Блок авионики NAV-X4</div>
+                <div class="price">₽ 320 000</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tabs
+    function openTab(index) {
+        document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+            btn.classList.toggle('active', i === index);
+        });
+        document.querySelectorAll('.tab-content').forEach((tab, i) => {
+            tab.classList.toggle('active', i === index);
+        });
+    }
+
+    // Gallery (берём src миниатюры, чтобы не было "тёмного экрана" из-за 404)
+    document.addEventListener('DOMContentLoaded', () => {
+        const mainImg = document.getElementById('mainProductImage');
+        const thumbs = document.querySelectorAll('.thumb');
+        if (!mainImg || !thumbs.length) return;
+
+        const fallbackSrc = mainImg.getAttribute('src');
+
+        thumbs.forEach((thumb) => {
+            thumb.addEventListener('click', () => {
+                const img = thumb.querySelector('img');
+                if (!img || !img.src) return;
+
+                thumbs.forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+
+                const nextSrc = img.src;
+
+                const pre = new Image();
+                pre.onload = () => { mainImg.src = nextSrc; };
+                pre.onerror = () => { mainImg.src = fallbackSrc; };
+                pre.src = nextSrc;
+            });
+        });
+
+        mainImg.addEventListener('error', () => {
+            mainImg.src = fallbackSrc;
+        });
+    });
+
+    // Burger menu
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('navOverlay');
+    const navClose = document.getElementById('navClose');
+
+    function closeMenu() {
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+
+    if (burger && nav && overlay && navClose) {
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', closeMenu);
+        navClose.addEventListener('click', closeMenu);
+
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    }
+</script>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <strong class="footer-logo">HSC Copter</strong>
+            <p class="footer-desc">
+                Профессиональные беспилотные технологии и решения для промышленности
+            </p>
+        </div>
+
+        <div class="footer-nav">
+            <h4>Навигация</h4>
+            <a href="/">Главная</a>
+            <a href="/pages/catalog.html">Каталог</a>
+            <a href="/pages/news.html">Новости</a>
+            <a href="/pages/about.html">О нас</a>
+            <a href="/pages/document.html">Документация</a>
+            <a href="/pages/obuchenie.html">Обучение</a>
+        </div>
+
+        <div class="footer-contacts">
+            <h4>Контакты</h4>
+            <a href="mailto:info@hsc-copter.com">info@hsc-copter.com</a>
+            <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+            <span class="footer-note">Пн–Пт, 9:00–18:00</span>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 HSC Copter. Все права защищены
+    </div>
+</footer>
+
+<script src="/styles/js/script.js"></script>
+<script src="/styles/js/form.js"></script>
+</body>
+</html>
