@@ -160,6 +160,7 @@
         <div class="related-grid">
             <h2>Похожие товары</h2>
             <div style="margin-bottom: 15px;" class="related-items">
+                <a style="color: var(--text-main);text-decoration: none;"  href="product2.html">
                 <div class="related-card">
                     <div class="related-image">
                         <img src="/styles/images/lopast_vinta.png" alt="Лопасть несущего винта">
@@ -167,6 +168,8 @@
                     <div class="related-title">Лопасть несущего винта Mi-8</div>
                     <div class="price">₽ 980 000</div>
                 </div>
+                </a>
+                <a style="color: var(--text-main);text-decoration: none;" href="product3.html">
                 <div class="related-card">
                     <div class="related-image">
                         <img src="/styles/images/gidro.png" alt="Гидронасос HP-240">
@@ -174,6 +177,8 @@
                     <div class="related-title">Гидронасос HP-240 для Mi-8/17</div>
                     <div class="price">₽ 210 000</div>
                 </div>
+                </a>
+                <a style="color: var(--text-main);text-decoration: none;" href="product4.html">
                 <div class="related-card">
                     <div class="related-image">
                         <img src="/styles/images/block_avioniki.webp" alt="Блок авионики NAV-X4">
@@ -181,6 +186,7 @@
                     <div class="related-title">Блок авионики NAV-X4</div>
                     <div class="price">₽ 320 000</div>
                 </div>
+                </a>
             </div>
         </div>
 
@@ -202,11 +208,8 @@
 
             thumbs.forEach(thumb => {
                 thumb.addEventListener('click', function() {
-                    // Убираем активный класс
                     thumbs.forEach(t => t.classList.remove('active'));
-                    // Добавляем активный класс текущей
                     this.classList.add('active');
-                    // Меняем основное изображение
                     const newImgSrc = this.getAttribute('data-image');
                     if (newImgSrc) {
                         mainImg.src = newImgSrc;
