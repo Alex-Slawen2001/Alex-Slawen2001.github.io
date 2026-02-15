@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Системы обучения — HSC Copter</title>
+
+    <meta name="description" content="Системы обучения и цифровые решения для подготовки персонала: LMS, симуляторы, VR/AR и контроль знаний." />
+    <link rel="shortcut icon" href="/styles/images/hsc-favicon_all.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/styles/css/styles.css" />
+    <!-- можно переиспользовать center.css, чтобы карточки и блоки выглядели единообразно -->
+    <link rel="stylesheet" href="/styles/css/center.css" />
+    <link rel="stylesheet" href="/styles/css/form.css" />
+
+    <!-- Небольшие стили только под фильтр и мелкие правки (адаптив + под темную тему) -->
+    <style>
+        .system-page-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .system-page-title h1 {
+            margin: 0 0 6px 0;
+        }
+        .system-page-title p {
+            margin: 0;
+            color: var(--text-secondary);
+            max-width: 820px;
+        }
+
+        .system-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 18px 0 26px;
+        }
+
+        .system-filter__btn {
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: var(--surface);
+            color: var(--text-secondary);
+            border: 1px solid rgba(255,255,255,.08);
+            transition: var(--transition);
+            cursor: pointer;
+            font: inherit;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .system-filter__btn:hover,
+        .system-filter__btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        .system-filter__search {
+            margin-left: auto;
+            min-width: 260px;
+            flex: 1 1 260px;
+            max-width: 380px;
+            position: relative;
+        }
+
+        .system-filter__search input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,.08);
+            color: var(--text-main);
+            outline: none;
+            transition: var(--transition);
+        }
+        .system-filter__search input:focus {
+            border-color: rgba(79, 138, 255, 0.45);
+            box-shadow: 0 0 0 3px rgba(79, 138, 255, 0.12);
+        }
+
+        .system-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        /* "Карточка" — используем структуру training-center-card, но контент другой */
+        .training-center-card__badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 12px 0 0;
+        }
+        .system-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(79, 138, 255, 0.12);
+            color: var(--primary);
+            border: 1px solid rgba(79, 138, 255, 0.18);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Улучшаем адаптивность контактов внутри карточек (если в center.css они в ряд) */
+        @media (max-width: 768px) {
+            .system-filter__search {
+                margin-left: 0;
+                max-width: 100%;
+            }
+            .system-page-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<header class="header">
+    <div class="container header-inner">
+
+        <div class="logo">
+            <a href="/">
+                <img style="width: 50%;" src="/styles/images/logo.png" alt="HSC Copter">
+            </a>
+        </div>
+
+        <nav class="nav" id="mobileNav">
+            <button class="nav-close" id="navClose" aria-label="Закрыть меню">
+                <span></span><span></span>
+            </button>
+
+            <a href="/" class="nav__link">Главная</a>
+            <a href="/pages/about.html" class="nav__link">О нас</a>
+            <a href="/pages/catalog.html" class="nav__link">Каталог</a>
+            <a href="/pages/news.html" class="nav__link">Новости</a>
+            <a href="/pages/modern.html" class="nav__link">Модернизация</a>
+            <a href="/pages/contacts.html" class="nav__link">Контакты</a>
+            <a href="/pages/reg.html" class="nav__link reg_button">Регистрация</a>
+            <a href="/pages/login.html" class="nav__link login_button">Войти</a>
+        </nav>
+
+        <div class="header__actions">
+            <a href="/pages/reg.html" class="btn-primary nav-cta">Регистрация</a>
+
+            <button class="burger" id="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+</header>
+
+<div class="container">
+    <div class="page-header">
+        <div class="breadcrumbs">
+            <a href="/">Главная</a><span class="crumb-sep">→</span>
+            <span>Системы обучения</span>
+        </div>
+    </div>
+</div>
+
+<div class="hsc-site-content">
+    <div class="container">
+        <div class="main-content">
+
+            <div class="system-page-header">
+                <div class="system-page-title">
+                    <h1 class="page-header__title">Системы обучения</h1>
+                    <p>
+                        Цифровые решения для подготовки и аттестации персонала: LMS, симуляторы, VR/AR-модули,
+                        контроль знаний и аналитика обучения.
+                    </p>
+                </div>
+
+                <div class="view-toggle">
+                    <button class="view-toggle__btn active" type="button">Список</button>
+                    <a href="/#" class="view-toggle__btn">На витрине</a>
+                </div>
+            </div>
+
+            <!-- ФИЛЬТР -->
+            <div class="system-filter" role="tablist" aria-label="Фильтр систем обучения">
+                <button class="system-filter__btn active" type="button" data-filter="all">Все</button>
+                <button class="system-filter__btn" type="button" data-filter="lms">LMS</button>
+                <button class="system-filter__btn" type="button" data-filter="sim">Симуляторы</button>
+                <button class="system-filter__btn" type="button" data-filter="vr">VR/AR</button>
+                <button class="system-filter__btn" type="button" data-filter="exam">Экзамены</button>
+                <button class="system-filter__btn" type="button" data-filter="analytics">Аналитика</button>
+
+                <div class="system-filter__search">
+                    <input id="systemSearch" type="search" placeholder="Поиск по названию или описанию…" aria-label="Поиск" />
+                </div>
+            </div>
+
+            <!-- СПИСОК -->
+            <div class="system-list" id="systemList">
+
+                <!-- 1 -->
+                <div class="training-center-card system-card" data-type="lms analytics" data-title="HSC Learn (LMS)">
+                    <div class="training-center-card__content">
+                        <h2 class="training-center-card__title">
+                            <a href="#">HSC Learn (LMS)</a>
+                        </h2>
+
+                        <div class="training-center-card__description">
+                            <p>
+                                Корпоративная LMS для управления программами обучения: курсы, расписания, тесты, сертификаты,
+                                электронные журналы и роли (слушатель/инструктор/администратор).
+                            </p>
+                            <p>
+                                Поддержка SCORM/xAPI, загрузка материалов, контроль прогресса и автоматическая выдача
+                                допусков после прохождения аттестации.
+                            </p>
+                        </div>
+
+                        <div class="training-center-card__badges">
+                            <span class="system-badge">📚 LMS</span>
+                            <span class="system-badge">📊 Отчёты</span>
+                            <span class="system-badge">🧩 SCORM/xAPI</span>
+                        </div>
+
+                        <a href="#" class="training-center-card__link">
+                            <span>Читать подробнее</span>
+                            <i>→</i>
+                        </a>
+
+                        <div class="training-center-card__contacts">
+                            <div class="contact-item">
+                                <div class="contact-item__icon"><i>⚙️</i></div>
+                                <div class="contact-item__content">
+                                    <div class="contact-item__label">Формат</div>
+                                    <div class="contact-item__value">Web + мобильный доступ, SSO</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-item__icon"><i>🔒</i></div>
+                                <div class="contact-item__content">
+                                    <div class="contact-item__label">Безопасность</div>
+                                    <div class="contact-item__value">Роли, аудит действий, журналы</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-item__icon"><i>✉️</i></div>
+                                <div class="contact-item__content">
+                                    <div class="contact-item__label">Запрос демо</div>
+                                    <div class="contact-item__value"><a href="mailto:info@hsc-copter.com">info@hsc-copter.com</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="training-center-card system-card" data-type="sim exam" data-title="HSC SimLab">
+                    <div class="training-center-card__content">
+                        <h2 class="training-center-card__title">
+                            <a href="#">HSC SimLab</a>
+                        </h2>
+
+                        <div class="training-center-card__description">
+                            <p>
+                                Комплекс тренажёров и сценариев для отработки процедур: предполётная подготовка,
+                                штатные/нештатные ситуации, взаимодействие экипажа, чек-листы и разбор полётов.
+                            </p>
+                            <p>
+                                Подходит для учебных классов и корпоративных центров, интегрируется с системой аттестации.
+                            </p>
+                        </div>
+
+                        <div class="training-center-card__badges">
+                            <span class="system-badge">🕹️ Симулятор</span>
+                            <span class="system-badge">🧾 Чек-листы</span>
+                            <span class="system-badge">✅ Аттестация</span>
+                        </div>
+
+                        <a href="#" class="training-center-card__link">
+                            <span>Читать подробнее</span>
+                            <i>→</i>
+                        </a>
+
+                        <div class="training-center-card__contacts">
+                            <div class="contact-item">
+                                <div class="contact-item__icon"><i>🧠</i></div>
+                                <div class="contact-item__content">
+                                    <div class="contact-item__label">Сценарии</div>
+                                    <div class="contact-item__value">Штатные/нештатные, настраиваемые</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-item__icon"><i>🖥️</i></div>
+                                <div class="contact-item__content">
+                                    <div class="contact-item__label">Развёртывание</div>
+                                    <div class="contact-item__value">Класс / тренажёрный комплекс</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-item__icon"><i>📞</i></div>
+                                <div class="contact-item__content">
+                                    <div class="contact-item__label">Консультация</div>
+                                    <div class="contact-item__value"><a href="tel:+70000000000">+7 (000) 000-00-00</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="training-center-card system-card" data-type="vr sim" data-title="HSC VR Hangar">
+                    <div class="training-center-card__content">
+                        <h2 class="training-center-card__title">
+                            <a href="#">HSC VR Hangar</a>
+                        </h2>
+
+                        <div class="training-center-card__description">
+                            <p>
+                                VR/AR-модули для обучения техобслуживанию: разборка/сборка узлов, диагностика,
+                                последовательность операций, интерактивные подсказки и контроль ошибок.
+                            </p>
+                            <p>
+                                Снижает время подготовки и повышает качество выполнения регламентных работ.
+                            </p>
+                        </div>
+
+                        <div class="training-center-card__badges">
+                            <span class="system-badge">🥽 VR/AR</span>
+                            <span class="system-badge">🔧 ТОиР</span>
+                            <span class="system-badge">📈 Эффективность</span>
+                        </div>
+
+                        <a href="#" class="training-center-card__link">
+                            <span>Читать подробнее</span>
+                            <i>→</i>
+                        </a>
+
+                        <div class="training-center-card__contacts">
+                            <div class="contact-item">
+                                <div class="contact-item__icon"><i>🧩</i></div>
+                                <div class="contact-item__content">
+                                    <div class="contact-item__label">Модули</div>
+                                    <div class="contact-item__value">Диагностика, регламент, сборка</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-item__icon"><i>📦</i></div>
+                                <div class="contact-item__content">
+                                    <div class="contact-item__label">Оборудование</div>
+                                    <div class="contact-item__value">VR-гарнитуры, контроллеры</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-item__icon"><i>✉️</i></div>
+                                <div class="contact-item__content">
+                                    <div class="contact-item__label">Запрос КП</div>
+                                    <div class="contact-item__value"><a href="mailto:info@hsc-copter.com">info@hsc-copter.com</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="training-center-card system-card" data-type="exam analytics" data-title="HSC Exam & Compliance">
+                    <div class="training-center-card__content">
+                        <h2 class="training-center-card__title">
+                            <a href="#">HSC Exam & Compliance</a>
+                        </h2>
+
+                        <div class="training-center-card__description">
+                            <p>
+                                Система контроля знаний и соответствия: банк вопросов, экзаменационные билеты,
+                                протоколы, электронные подписи и автоматические напоминания о сроках допусков.
+                            </p>
+                            <p>
+                                Поддерживает гибкую настройку правил: пороги, попытки, таймер, анти-подсказки,
+                                выгрузку протоколов и отчётов.
+                            </p>
+                        </div>
+
+                        <div class="training-center-card__badges">
+                            <span class="system-badge">📝 Экзамены</span>
+                            <span class="system-badge">🧾 Протоколы</span>
+                            <span class="system-badge">⏱️ Регламенты</span>
+                        </div>
+
+                        <a href="#" class="training-center-card__link">
+                            <span>Читать подробнее</span>
+                            <i>→</i>
+                        </a>
+
+                        <div class="training-center-card__contacts">
+                            <div class="contact-item">
+                                <div class="contact-item__icon"><i>📌</i></div>
+                                <div class="contact-item__content">
+                                    <div class="contact-item__label">Функции</div>
+                                    <div class="contact-item__value">Банк вопросов, протоколы, напоминания</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-item__icon"><i>🧷</i></div>
+                                <div class="contact-item__content">
+                                    <div class="contact-item__label">Интеграции</div>
+                                    <div class="contact-item__value">LMS / кадровые системы / отчёты</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-item__icon"><i>📞</i></div>
+                                <div class="contact-item__content">
+                                    <div class="contact-item__label">Связаться</div>
+                                    <div class="contact-item__value"><a href="tel:+70000000000">+7 (000) 000-00-00</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /system-list -->
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container footer-grid">
+
+        <div class="footer-brand">
+            <strong class="footer-logo">HSC Copter</strong>
+            <p class="footer-desc">
+                Профессиональные беспилотные технологии и решения для промышленности
+            </p>
+        </div>
+
+        <div class="footer-nav">
+            <h4>Навигация</h4>
+            <a href="/">Главная</a>
+            <a href="/pages/catalog.html">Каталог</a>
+            <a href="/pages/news.html">Новости</a>
+            <a href="/pages/about.html">О нас</a>
+            <a href="/pages/document.html">Документация</a>
+            <a href="/pages/obuchenie.html">Обучение</a>
+        </div>
+
+        <div class="footer-contacts">
+            <h4>Контакты</h4>
+            <a href="mailto:info@hsc-copter.com">info@hsc-copter.com</a>
+            <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+            <span class="footer-note">Пн–Пт, 9:00–18:00</span>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 HSC Copter. Все права защищены
+    </div>
+</footer>
+
+<!-- Модалка консультации (как на остальных страницах) -->
+<div class="consult-modal" id="consultModal">
+    <div class="consult-overlay js-close-consult"></div>
+
+    <div class="consult-window">
+        <button class="consult-close js-close-consult">✕</button>
+
+        <h2 class="consult-title">Запросить консультацию</h2>
+        <p class="consult-subtitle">Оставьте сообщение — мы свяжемся с вами в ближайшее время</p>
+
+        <form id="consultForm">
+            <div class="consult-grid">
+                <div class="consult-field full">
+                    <textarea name="message" id="messageField" placeholder="Введите ваше сообщение*" required></textarea>
+                    <div class="error-message" id="messageError"></div>
+                </div>
+
+                <div class="consult-field">
+                    <input type="text" name="name" id="nameField" placeholder="Ваше имя*" required>
+                    <div class="error-message" id="nameError"></div>
+                </div>
+
+                <div class="consult-field">
+                    <input type="email" name="email" id="emailField" placeholder="Ваш e-mail">
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="consult-field">
+                    <input type="tel" name="phone" id="phoneField" placeholder="Телефон">
+                    <div class="error-message" id="phoneError"></div>
+                </div>
+            </div>
+
+            <button type="submit" class="consult-submit" id="submitBtn">Отправить запрос</button>
+
+            <div class="form-message" id="successMessage" style="display: none;">
+                <div class="success-icon">✓</div>
+                <h3>Заявка успешно отправлена!</h3>
+                <p>Мы свяжемся с вами в ближайшее время.</p>
+                <button type="button" class="close-message-btn js-close-consult">Закрыть</button>
+            </div>
+
+            <div class="form-message error" id="errorMessage" style="display: none;">
+                <div class="error-icon">⚠</div>
+                <h3>Произошла ошибка</h3>
+                <p id="errorText">Пожалуйста, попробуйте позже.</p>
+                <button type="button" class="retry-btn">Попробовать снова</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/styles/js/script.js"></script>
+<script src="/styles/js/form.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // ===== БУРГЕР =====
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('navOverlay');
+        const navClose = document.getElementById('navClose');
+
+        function closeMenu() {
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        if (burger && nav && overlay && navClose) {
+            burger.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                overlay.classList.toggle('active');
+            });
+
+            overlay.addEventListener('click', closeMenu);
+            navClose.addEventListener('click', closeMenu);
+
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+        }
+
+        // ===== "Список/На витрине" (как демо) =====
+        const viewButtons = document.querySelectorAll('.view-toggle__btn');
+        viewButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.tagName.toLowerCase() === 'a') return; // ссылка как демо
+                viewButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // ===== ФИЛЬТР СИСТЕМ =====
+        const filterButtons = Array.from(document.querySelectorAll('.system-filter__btn'));
+        const cards = Array.from(document.querySelectorAll('.system-card'));
+        const searchInput = document.getElementById('systemSearch');
+
+        let activeFilter = 'all';
+        let searchTerm = '';
+
+        function applyFilter() {
+            const term = searchTerm.trim().toLowerCase();
+
+            cards.forEach(card => {
+                const types = (card.getAttribute('data-type') || '').split(/\s+/).filter(Boolean);
+                const title = (card.getAttribute('data-title') || '').toLowerCase();
+                const text = (card.textContent || '').toLowerCase();
+
+                const matchType = (activeFilter === 'all') ? true : types.includes(activeFilter);
+                const matchSearch = term ? (title.includes(term) || text.includes(term)) : true;
+
+                card.style.display = (matchType && matchSearch) ? '' : 'none';
+            });
+        }
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeFilter = btn.getAttribute('data-filter') || 'all';
+                applyFilter();
+            });
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                searchTerm = searchInput.value || '';
+                applyFilter();
+            });
+        }
+
+        applyFilter();
+
+        // ===== КОНСУЛЬТАЦИЯ (открытие/закрытие) =====
+        const consultModal = document.getElementById('consultModal');
+        if (consultModal) {
+            document.querySelectorAll('.js-open-consult').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    consultModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            document.querySelectorAll('.js-close-consult').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    consultModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
