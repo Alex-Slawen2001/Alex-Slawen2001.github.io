@@ -10,11 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="/styles/css/styles.css" />
-    <!-- можно переиспользовать center.css, чтобы карточки и блоки выглядели единообразно -->
     <link rel="stylesheet" href="/styles/css/center.css" />
     <link rel="stylesheet" href="/styles/css/form.css" />
 
-    <!-- Небольшие стили только под фильтр и мелкие правки (адаптив + под темную тему) -->
     <style>
         .system-page-header {
             display: flex;
@@ -90,7 +88,6 @@
             gap: 18px;
         }
 
-        /* "Карточка" — используем структуру training-center-card, но контент другой */
         .training-center-card__badges {
             display: flex;
             gap: 8px;
@@ -110,7 +107,6 @@
             font-weight: 600;
         }
 
-        /* Улучшаем адаптивность контактов внутри карточек (если в center.css они в ряд) */
         @media (max-width: 768px) {
             .system-filter__search {
                 margin-left: 0;
@@ -169,7 +165,7 @@
     </div>
 </div>
 
-<div class="hsc-site-content">
+<div style="margin-top: -50px;" class="hsc-site-content">
     <div class="container">
         <div class="main-content">
 
@@ -188,7 +184,7 @@
                 </div>
             </div>
 
-            <!-- ФИЛЬТР -->
+
             <div class="system-filter" role="tablist" aria-label="Фильтр систем обучения">
                 <button class="system-filter__btn active" type="button" data-filter="all">Все</button>
                 <button class="system-filter__btn" type="button" data-filter="lms">LMS</button>
@@ -202,10 +198,10 @@
                 </div>
             </div>
 
-            <!-- СПИСОК -->
+
             <div class="system-list" id="systemList">
 
-                <!-- 1 -->
+
                 <div class="training-center-card system-card" data-type="lms analytics" data-title="HSC Learn (LMS)">
                     <div class="training-center-card__content">
                         <h2 class="training-center-card__title">
@@ -262,7 +258,6 @@
                     </div>
                 </div>
 
-                <!-- 2 -->
                 <div class="training-center-card system-card" data-type="sim exam" data-title="HSC SimLab">
                     <div class="training-center-card__content">
                         <h2 class="training-center-card__title">
@@ -318,7 +313,6 @@
                     </div>
                 </div>
 
-                <!-- 3 -->
                 <div class="training-center-card system-card" data-type="vr sim" data-title="HSC VR Hangar">
                     <div class="training-center-card__content">
                         <h2 class="training-center-card__title">
@@ -374,7 +368,6 @@
                     </div>
                 </div>
 
-                <!-- 4 -->
                 <div class="training-center-card system-card" data-type="exam analytics" data-title="HSC Exam & Compliance">
                     <div class="training-center-card__content">
                         <h2 class="training-center-card__title">
@@ -431,7 +424,7 @@
                     </div>
                 </div>
 
-            </div><!-- /system-list -->
+            </div>
 
         </div>
     </div>
@@ -471,7 +464,6 @@
     </div>
 </footer>
 
-<!-- Модалка консультации (как на остальных страницах) -->
 <div class="consult-modal" id="consultModal">
     <div class="consult-overlay js-close-consult"></div>
 
@@ -553,7 +545,6 @@
             });
         }
 
-        // ===== "Список/На витрине" (как демо) =====
         const viewButtons = document.querySelectorAll('.view-toggle__btn');
         viewButtons.forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -563,7 +554,6 @@
             });
         });
 
-        // ===== ФИЛЬТР СИСТЕМ =====
         const filterButtons = Array.from(document.querySelectorAll('.system-filter__btn'));
         const cards = Array.from(document.querySelectorAll('.system-card'));
         const searchInput = document.getElementById('systemSearch');
@@ -604,7 +594,6 @@
 
         applyFilter();
 
-        // ===== КОНСУЛЬТАЦИЯ (открытие/закрытие) =====
         const consultModal = document.getElementById('consultModal');
         if (consultModal) {
             document.querySelectorAll('.js-open-consult').forEach(btn => {
