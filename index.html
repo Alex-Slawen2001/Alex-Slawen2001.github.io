@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/styles/css/form.css">
 
 </head>
+
 <body>
 <header class="header">
     <div class="container header-inner">
@@ -29,14 +30,31 @@
             </button>
 
             <a href="/" class="nav__link">Главная</a>
-            <a href="/pages/about.html" class="nav__link">О нас</a>
+            <div class="nav-item has-dropdown">
+                <div class="nav-item has-submenu">
+                    <a class="nav__link nav-parent" href="#">Информация</a>
+                    <div class="nav-submenu">
+                        <a class="nav-submenu__link" href="/pages/about.html">О нас</a>
+                        <a class="nav-submenu__link" href="/pages/obuchenie.html">Обучение</a>
+                        <a class="nav-submenu__link" href="/pages/document.html">Документация</a>
+                    </div>
+                </div>
+            </div>
+
             <a href="/pages/catalog.html" class="nav__link">Каталог</a>
             <a href="/pages/news.html" class="nav__link">Новости</a>
-            <a href="/pages/modern.html" class="nav__link">Модернизация</a>
+            <div class="nav-item has-submenu">
+                <a class="nav__link nav-parent" href="/pages/modern.html">Модернизация</a>
+                <div class="nav-submenu">
+                    <a class="nav-submenu__link" href="/pages/modern.html">Вертолёты</a>
+                    <a class="nav-submenu__link" href="/pages/modern_dron.html">Дроны</a>
+                </div>
+            </div>
+
+
             <a href="/pages/contacts.html" class="nav__link">Контакты</a>
             <a href="/pages/reg.html" class="nav__link reg_button">Регистрация</a>
             <a href="/pages/login.html" class="nav__link login_button">Войти</a>
-
 
         </nav>
 
@@ -54,142 +72,143 @@
 
     <div class="nav-overlay" id="navOverlay"></div>
 </header>
-    <section class="hero-with-menu">
-        <div class="container hero-menu-container">
-            <div class="hero-carousel-wrapper">
-                <div class="hero-carousel">
-                    <div class="carousel-slide active" style="background-image: url('/styles/images/bg_image1.jpg')">
-                        <div class="hero-content">
-                            <h1>Инновационные решения</h1>
-                            <p>Разработка, внедрение и сопровождение авиационных систем</p>
-                            <div class="hero-actions">
-                                <button id="but_catalog1" class="btn-primary">Каталог</button>
-                                <button class="btn-outline custom_button js-open-consult">Запросить консультацию</button>
-                            </div>
+
+<section class="hero-with-menu">
+    <div class="container hero-menu-container">
+        <div class="hero-carousel-wrapper">
+            <div class="hero-carousel">
+                <div class="carousel-slide active" style="background-image: url('/styles/images/bg_image1.jpg')">
+                    <div class="hero-content">
+                        <h1>Инновационные решения</h1>
+                        <p>Разработка, внедрение и сопровождение авиационных систем</p>
+                        <div class="hero-actions">
+                            <button id="but_catalog1" class="btn-primary">Каталог</button>
+                            <button class="btn-outline custom_button js-open-consult">Запросить консультацию</button>
                         </div>
                     </div>
-
-
-                    <div class="carousel-slide" style="background-image: url('/styles/images/lopast.jpg')">
-                        <div class="hero-content">
-                            <h1>Инновационные решения</h1>
-                            <p>Разработка, внедрение и сопровождение авиационных систем</p>
-                            <div class="hero-actions">
-                                <button id="but_catalog2" class="btn-primary">Каталог</button>
-                                <button class="btn-outline custom_button js-open-consult">Запросить консультацию</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="carousel-prev">&#10094;</button>
-                    <button class="carousel-next">&#10095;</button>
                 </div>
-            </div>
 
-            <div class="menu-cards-container">
-                <div class="menu-grid">
-                    <a href="/pages/modern.html" class="menu-card-item">
-                        <div class="menu-card-icon">
-                            <i class="vsk-upgrade lh0"></i>
-                        </div>
-                        <div class="menu-card-content">
-                            <h3>МОДЕРНИЗАЦИИ ВЕРТОЛЕТОВ</h3>
-                            <p class="menu-card-description">Профессиональная модернизация и тюнинг вертолетов</p>
-                            <span class="menu-card-link">Подробнее </span>
-                        </div>
-                    </a>
-
-                    <a href="/pages/catalog.html" class="menu-card-item">
-                        <div class="menu-card-icon">
-                            <i class="vsk-sparse1 lh0"></i>
-                        </div>
-                        <div class="menu-card-content">
-                            <h3>ИНТЕРНЕТ-МАГАЗИН</h3>
-                            <p class="menu-card-description">Оригинальные запчасти и оборудование для вертолетов</p>
-                            <span class="menu-card-link">Перейти в магазин </span>
-                        </div>
-                    </a>
-
-                    <div class="menu-card-item promo-card">
-                        <div class="promo-content">
-                            <h3>Специальное предложение</h3>
-                            <p>Получите скидку 15% на первую модернизацию</p>
-                            <button class="btn-primary btn-promo js-open-promo">
-                                Получить скидку
-                            </button>
+                <div class="carousel-slide" style="background-image: url('/styles/images/lopast.jpg')">
+                    <div class="hero-content">
+                        <h1>Инновационные решения</h1>
+                        <p>Разработка, внедрение и сопровождение авиационных систем</p>
+                        <div class="hero-actions">
+                            <button id="but_catalog2" class="btn-primary">Каталог</button>
+                            <button class="btn-outline custom_button js-open-consult">Запросить консультацию</button>
                         </div>
                     </div>
-
                 </div>
+
+                <button class="carousel-prev">&#10094;</button>
+                <button class="carousel-next">&#10095;</button>
             </div>
         </div>
-    </section>
 
+        <div class="menu-cards-container">
+            <div class="menu-grid">
+                <a href="/pages/modern.html" class="menu-card-item">
+                    <div class="menu-card-icon">
+                        <i class="vsk-upgrade lh0"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <h3>МОДЕРНИЗАЦИИ ВЕРТОЛЕТОВ</h3>
+                        <p class="menu-card-description">Профессиональная модернизация и тюнинг вертолетов</p>
+                        <span class="menu-card-link">Подробнее </span>
+                    </div>
+                </a>
 
-    <section class="section">
-        <div class="container">
-            <h2>Каталог решений для дронов</h2>
+                <a href="/pages/catalog.html" class="menu-card-item">
+                    <div class="menu-card-icon">
+                        <i class="vsk-sparse1 lh0"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <h3>ИНТЕРНЕТ-МАГАЗИН</h3>
+                        <p class="menu-card-description">Оригинальные запчасти и оборудование для вертолетов</p>
+                        <span class="menu-card-link">Перейти в магазин </span>
+                    </div>
+                </a>
 
-            <div class="grid-products">
+                <div class="menu-card-item promo-card">
+                    <div class="promo-content">
+                        <h3>Специальное предложение</h3>
+                        <p>Получите скидку 15% на первую модернизацию</p>
+                        <button class="btn-primary btn-promo js-open-promo">
+                            Получить скидку
+                        </button>
+                    </div>
+                </div>
 
-                <article class="product-card">
-                    <img style="width: 20%;" src="/styles/images/settings.png">
-                    <h3>HSC Drone Pro</h3>
-                    <p>Промышленный дрон высокой дальности</p>
-                    <button data-button="dronCat" class="btn-primary">Подробнее</button>
-                </article>
-
-                <article class="product-card">
-                    <img style="width: 20%;" src="/styles/images/more_set.png">
-                    <h3>HSC Surveyor</h3>
-                    <p>Аэросъемка и мониторинг ситуации</p>
-                    <button data-button="dronCat" class="btn-primary">Подробнее</button>
-                </article>
-
-                <article class="product-card">
-                    <img style="width: 20%;" src="/styles/images/img_2.png">
-                    <h3>HSC Tactical</h3>
-                    <p>Тактические задачи и безопасность</p>
-                    <button data-button="dronCat" class="btn-primary">Подробнее</button>
-                </article>
-
-                <article class="product-card">
-                    <img style="width: 20%;" src="/styles/images/generator.png">
-                    <h3>HSC Agrodron</h3>
-                    <p>Сельскохозяйственный мониторинг и анализ</p>
-                    <button data-button="dronCat" class="btn-primary">Подробнее</button>
-                </article>
-
-                <article class="product-card">
-                    <img style="width: 20%;" src="/styles/images/bpla.png">
-                    <h3>HSC Guardian</h3>
-                    <p>Система видеонаблюдения с БПЛА</p>
-                    <button data-button="dronCat" class="btn-primary">Подробнее</button>
-                </article>
-
-                <article class="product-card">
-                    <img style="width: 20%;" src="/styles/images/helicopter.png">
-                    <h3>HSC Cargo Light</h3>
-                    <p>Грузовой дрон для доставки до 5 кг</p>
-                    <button data-button="dronCat" class="btn-primary">Подробнее</button>
-                </article>
-
-                <article class="product-card">
-                    <img style="width: 20%;" src="/styles/images/set.png">
-                    <h3>HSC Inspector</h3>
-                    <p>Инспекция промышленных объектов и сооружений</p>
-                    <button data-button="dronCat" class="btn-primary">Подробнее</button>
-                </article>
-
-                <article class="product-card">
-                    <img style="width: 20%;" src="/styles/images/bpla2.png">
-                    <h3>HSC Thermal</h3>
-                    <p>Тепловизионный дрон для поисковых операций</p>
-                    <button data-button="dronCat" class="btn-primary">Подробнее</button>
-                </article>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container">
+        <h2>Каталог решений для дронов</h2>
+
+        <div class="grid-products">
+
+            <article class="product-card">
+                <img style="width: 20%;" src="/styles/images/settings.png">
+                <h3>HSC Drone Pro</h3>
+                <p>Промышленный дрон высокой дальности</p>
+                <button data-button="dronCat" class="btn-primary">Подробнее</button>
+            </article>
+
+            <article class="product-card">
+                <img style="width: 20%;" src="/styles/images/more_set.png">
+                <h3>HSC Surveyor</h3>
+                <p>Аэросъемка и мониторинг ситуации</p>
+                <button data-button="dronCat" class="btn-primary">Подробнее</button>
+            </article>
+
+            <article class="product-card">
+                <img style="width: 20%;" src="/styles/images/img_2.png">
+                <h3>HSC Tactical</h3>
+                <p>Тактические задачи и безопасность</p>
+                <button data-button="dronCat" class="btn-primary">Подробнее</button>
+            </article>
+
+            <article class="product-card">
+                <img style="width: 20%;" src="/styles/images/generator.png">
+                <h3>HSC Agrodron</h3>
+                <p>Сельскохозяйственный мониторинг и анализ</p>
+                <button data-button="dronCat" class="btn-primary">Подробнее</button>
+            </article>
+
+            <article class="product-card">
+                <img style="width: 20%;" src="/styles/images/bpla.png">
+                <h3>HSC Guardian</h3>
+                <p>Система видеонаблюдения с БПЛА</p>
+                <button data-button="dronCat" class="btn-primary">Подробнее</button>
+            </article>
+
+            <article class="product-card">
+                <img style="width: 20%;" src="/styles/images/helicopter.png">
+                <h3>HSC Cargo Light</h3>
+                <p>Грузовой дрон для доставки до 5 кг</p>
+                <button data-button="dronCat" class="btn-primary">Подробнее</button>
+            </article>
+
+            <article class="product-card">
+                <img style="width: 20%;" src="/styles/images/set.png">
+                <h3>HSC Inspector</h3>
+                <p>Инспекция промышленных объектов и сооружений</p>
+                <button data-button="dronCat" class="btn-primary">Подробнее</button>
+            </article>
+
+            <article class="product-card">
+                <img style="width: 20%;" src="/styles/images/bpla2.png">
+                <h3>HSC Thermal</h3>
+                <p>Тепловизионный дрон для поисковых операций</p>
+                <button data-button="dronCat" class="btn-primary">Подробнее</button>
+            </article>
+        </div>
+    </div>
+</section>
+
 <section class="section product-slider-section">
     <div class="container">
         <h2>Мы модернизируем:</h2>
@@ -349,6 +368,7 @@
         });
     </script>
 </footer>
+
 <div class="consult-modal" id="consultModal">
     <div class="consult-overlay js-close-consult"></div>
 
@@ -411,6 +431,7 @@
         </form>
     </div>
 </div>
+
 <script src="/styles/js/script.js"></script>
 <script src="/styles/js/form.js"></script>
 <script src="/styles/js/calc.js"></script>
@@ -437,13 +458,11 @@
     nav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', closeMenu);
     });
-
-
 </script>
-<script>
 
+<script>
     but1 = document.getElementById('but_catalog1').addEventListener('click',function () {
-     window.location.href = '/pages/catalog.html'
+        window.location.href = '/pages/catalog.html'
     });
     but2 = document.getElementById('but_catalog2').addEventListener('click',function (){
         window.location.href= "/pages/catalog.html"
@@ -452,21 +471,21 @@
         window.location.href = '/pages/detail/news_detail.html'
     });
     but4 = document.getElementById('but_news2').addEventListener('click',function() {
-       window.location.href = '/pages/detail/news_detail.html'
+        window.location.href = '/pages/detail/news_detail.html'
     });
     but5 = document.getElementById('but_news3').addEventListener('click',function() {
-       window.location.href = '/pages/detail/news_detail.html'
+        window.location.href = '/pages/detail/news_detail.html'
     });
 
     const buttons = document.querySelectorAll('[data-button="btn_product"]');
 
     buttons.forEach(function(button, index) {
-       button.addEventListener('click',function() {
-           window.location.href = '/pages/modern.html'
-       })
+        button.addEventListener('click',function() {
+            window.location.href = '/pages/modern.html'
+        })
     });
-
 </script>
+
 <div class="promo-modal" id="promoModal">
     <div class="promo-overlay js-close-promo"></div>
 
@@ -522,10 +541,8 @@
         </div>
     </div>
 </div>
+
 <script>
-
-    ////////
-
     document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('promoModal');
         const openBtn = document.querySelector('.js-open-promo');
@@ -557,7 +574,7 @@
 
         [base, extra].forEach(i => i.addEventListener('input', recalc));
     });
-    ///////
+
     document.addEventListener('click', function(e) {
         if (e.target.matches('[data-button="dronCat"]')) {
             window.location.href = '/pages/modern_dron.html';

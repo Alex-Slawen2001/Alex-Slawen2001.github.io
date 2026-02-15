@@ -29,10 +29,26 @@
             </button>
 
             <a href="/" class="nav__link">Главная</a>
-            <a href="/pages/about.html" class="nav__link">О нас</a>
-            <a href="/pages/catalog.html" class="nav__link">Продукты</a>
+            <div class="nav-item has-dropdown">
+                <div class="nav-item has-submenu">
+                    <a class="nav__link nav-parent" href="#">Информация</a>
+                    <div class="nav-submenu">
+                        <a class="nav-submenu__link" href="/pages/about.html">О нас</a>
+                        <a class="nav-submenu__link" href="/pages/obuchenie.html">Обучение</a>
+                        <a class="nav-submenu__link" href="/pages/document.html">Документация</a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/pages/catalog.html" class="nav__link">Каталог</a>
             <a href="/pages/news.html" class="nav__link">Новости</a>
-            <a href="/pages/modern.html" class="nav__link">Модернизация</a>
+            <div class="nav-item has-submenu">
+                <a class="nav__link nav-parent" href="/pages/modern.html">Модернизация</a>
+                <div class="nav-submenu">
+                    <a class="nav-submenu__link" href="/pages/modern.html">Вертолёты</a>
+                    <a class="nav-submenu__link" href="/pages/modern_dron.html">Дроны</a>
+                </div>
+            </div>
             <a href="/pages/contacts.html" class="nav__link">Контакты</a>
             <a href="/pages/reg.html" class="nav__link reg_button">Регистрация</a>
             <a href="/pages/login.html" class="nav__link login_button">Войти</a>

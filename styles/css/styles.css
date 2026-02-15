@@ -2177,6 +2177,120 @@ body {
     margin-top: 10px;
     font-size: 14px;
 }
+/* desktop dropdown */
+/* ===== Submenu base (не ломает обычные пункты) ===== */
+/* ================= DROPDOWN ONLY ================= */
+
+/* контейнер пункта с подменю */
+.nav-item.has-submenu {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* родительская ссылка — внешний вид не меняем */
+.nav-parent {
+    display: inline-block;
+}
+
+/* submenu по умолчанию скрыто (десктоп через hover, мобилка через max-height) */
+.nav-submenu {
+    display: none;
+}
+
+/* ========== DESKTOP (hover) ========== */
+@media (min-width: 769px) {
+
+    /* открытие при hover и при focus-within */
+    .nav-item.has-submenu:hover .nav-submenu,
+    .nav-item.has-submenu:focus-within .nav-submenu {
+        display: block;
+    }
+
+    .nav-submenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        margin-top: 10px; /* визуальный отступ */
+        min-width: 220px;
+        background: var(--bg-soft);
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 14px;
+        padding: 10px;
+        box-shadow: 0 20px 60px rgba(0,0,0,.55);
+        z-index: 2000;
+    }
+
+    /* “мостик” между родителем и dropdown — чтобы не пропадал при наведении */
+    .nav-submenu::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -10px;      /* равно margin-top */
+        height: 10px;
+    }
+
+    .nav-submenu__link {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 12px;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: var(--transition);
+        white-space: nowrap;
+    }
+
+    .nav-submenu__link:hover {
+        background: rgba(79,138,255,.12);
+        color: var(--text-main);
+    }
+}
+
+/* ========== MOBILE (accordion inside burger menu) ========== */
+@media (max-width: 768px) {
+
+    .nav-item.has-submenu {
+        display: block;
+    }
+
+    /* submenu аккордеоном */
+    .nav-submenu {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .25s ease;
+        padding-left: 10px;
+        margin-top: 6px;
+    }
+
+    .nav-item.has-submenu.is-open .nav-submenu {
+        max-height: 360px; /* запас */
+    }
+
+    /* подпункты красиво столбиком */
+    .nav-submenu__link {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        padding: 12px 12px;
+        border-radius: 14px;
+        text-decoration: none;
+        color: var(--text-main);
+        background: rgba(255,255,255,.04);
+        border: 1px solid rgba(255,255,255,.08);
+        transition: var(--transition);
+        font-size: 16px;
+    }
+
+    .nav-submenu__link:hover,
+    .nav-submenu__link:active {
+        background: rgba(79,138,255,.12);
+        border-color: rgba(79,138,255,.35);
+    }
+}
+
+
 
 @media (max-width: 768px) {
     .promo-window {

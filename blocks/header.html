@@ -29,10 +29,23 @@
             </button>
 
             <a href="/" class="nav__link">Главная</a>
-            <a href="/pages/about.html" class="nav__link">О нас</a>
+            <div class="nav-item has-submenu">
+                <a class="nav__link nav-parent" href="/pages/about.html">О нас</a>
+                <div class="nav-submenu">
+                    <a class="nav-submenu__link" href="/pages/obuchenie.html">Обучение</a>
+                    <a class="nav-submenu__link" href="/pages/document.html">Документация</a>
+                </div>
+            </div>
+
             <a href="/pages/catalog.html" class="nav__link">Продукты</a>
             <a href="/pages/news.html" class="nav__link">Новости</a>
-            <a href="/pages/modern.html" class="nav__link">Модернизация</a>
+            <div class="nav-item has-submenu">
+                <a class="nav__link nav-parent" href="/pages/about.html">Модернизация</a>
+                <div class="nav-submenu">
+                    <a class="nav-submenu__link" href="/pages/modern.html">Вертолёты</a>
+                    <a class="nav-submenu__link" href="/pages/modern_dron.html">Дроны</a>
+                </div>
+            </div>
             <a href="/pages/contacts.html" class="nav__link">Контакты</a>
 
 
