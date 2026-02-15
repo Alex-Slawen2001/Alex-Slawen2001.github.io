@@ -2177,23 +2177,19 @@ body {
     margin-top: 10px;
     font-size: 14px;
 }
-/* desktop dropdown */
-/* ===== Submenu base (не ломает обычные пункты) ===== */
-/* ================= DROPDOWN ONLY ================= */
 
-/* контейнер пункта с подменю */
 .nav-item.has-submenu {
     position: relative;
     display: inline-flex;
     align-items: center;
 }
 
-/* родительская ссылка — внешний вид не меняем */
+
 .nav-parent {
     display: inline-block;
 }
 
-/* submenu по умолчанию скрыто (десктоп через hover, мобилка через max-height) */
+
 .nav-submenu {
     display: none;
 }
@@ -2201,7 +2197,7 @@ body {
 /* ========== DESKTOP (hover) ========== */
 @media (min-width: 769px) {
 
-    /* открытие при hover и при focus-within */
+
     .nav-item.has-submenu:hover .nav-submenu,
     .nav-item.has-submenu:focus-within .nav-submenu {
         display: block;
@@ -2211,7 +2207,7 @@ body {
         position: absolute;
         top: 100%;
         left: 0;
-        margin-top: 10px; /* визуальный отступ */
+        margin-top: 10px;
         min-width: 220px;
         background: var(--bg-soft);
         border: 1px solid rgba(255,255,255,.08);
@@ -2221,13 +2217,13 @@ body {
         z-index: 2000;
     }
 
-    /* “мостик” между родителем и dropdown — чтобы не пропадал при наведении */
+
     .nav-submenu::before {
         content: "";
         position: absolute;
         left: 0;
         right: 0;
-        top: -10px;      /* равно margin-top */
+        top: -10px;
         height: 10px;
     }
 
@@ -2247,14 +2243,12 @@ body {
     }
 }
 
-/* ========== MOBILE (accordion inside burger menu) ========== */
 @media (max-width: 768px) {
 
     .nav-item.has-submenu {
         display: block;
     }
 
-    /* submenu аккордеоном */
     .nav-submenu {
         display: block;
         max-height: 0;
@@ -2265,10 +2259,10 @@ body {
     }
 
     .nav-item.has-submenu.is-open .nav-submenu {
-        max-height: 360px; /* запас */
+        max-height: 360px;
     }
 
-    /* подпункты красиво столбиком */
+
     .nav-submenu__link {
         display: block;
         width: 100%;
