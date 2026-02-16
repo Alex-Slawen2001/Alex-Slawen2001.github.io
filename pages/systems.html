@@ -117,7 +117,6 @@
             }
         }
 
-        /* ====== ВАЖНО: мобильное раскрытие подменю ====== */
         @media (max-width: 768px) {
             .nav-item.has-submenu .nav-submenu {
                 display: none;
@@ -130,7 +129,6 @@
                 border: 1px solid rgba(255,255,255,.06);
             }
 
-            /* ИСПРАВЛЕНО: класс совпадает с JS (.is-open) */
             .nav-item.has-submenu.is-open .nav-submenu {
                 display: flex;
             }
@@ -566,7 +564,6 @@
 <script src="/styles/js/script.js"></script>
 <script src="/styles/js/form.js"></script>
 
-<!-- Меню: бургер / оверлей / закрытие -->
 <script>
     const burger = document.getElementById('burger');
     const nav = document.getElementById('mobileNav');
@@ -577,7 +574,6 @@
         nav.classList.remove('active');
         overlay.classList.remove('active');
 
-        // на всякий случай закрываем подменю при закрытии меню
         nav.querySelectorAll('.nav-item.has-submenu.is-open').forEach(item => item.classList.remove('is-open'));
     }
 
@@ -589,7 +585,6 @@
     overlay.addEventListener('click', closeMenu);
     navClose.addEventListener('click', closeMenu);
 
-    // ИСПРАВЛЕНО: не закрываем меню при клике на nav-parent (он раскрывает подменю)
     nav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
             if (link.classList.contains('nav-parent')) return;
@@ -598,7 +593,6 @@
     });
 </script>
 
-<!-- Подменю в адаптиве -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const mq = window.matchMedia('(max-width: 768px)');
@@ -609,15 +603,12 @@
             });
         }
 
-        // Перехват клика по родительским пунктам меню на мобиле
         document.addEventListener('click', (e) => {
             if (!mq.matches) return;
 
             const parentLink = e.target.closest('.nav-item.has-submenu > a.nav-parent');
             if (!parentLink) return;
 
-            // Если это ссылка с реальным href (не #), на мобиле всё равно раскрываем подменю,
-            // а переход можно оставить на пункт подменю.
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
@@ -629,19 +620,17 @@
             item.classList.toggle('is-open', willOpen);
         }, true);
 
-        // Клик вне подменю — закрыть
         document.addEventListener('click', (e) => {
             if (!mq.matches) return;
             if (e.target.closest('.nav-item.has-submenu')) return;
             closeAllSubmenus();
         });
 
-        // При смене брейкпоинта — закрыть подменю
         mq.addEventListener?.('change', () => closeAllSubmenus());
     });
 </script>
 
-<!-- Фильтры + поиск (работают и на мобиле) -->
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const filterButtons = Array.from(document.querySelectorAll('.system-filter__btn'));
@@ -661,7 +650,7 @@
             const q = normalize(query);
 
             cards.forEach(card => {
-                const types = normalize(card.getAttribute('data-type'));   // например: "lms analytics"
+                const types = normalize(card.getAttribute('data-type'));
                 const title = normalize(card.getAttribute('data-title'));
                 const text = normalize(card.textContent);
 
@@ -686,7 +675,7 @@
             applyFilters();
         });
 
-        // первичная отрисовка
+
         applyFilters();
     });
 </script>
