@@ -116,6 +116,39 @@
                 flex-direction: column;
             }
         }
+
+        /* ====== ВАЖНО: мобильное раскрытие подменю ====== */
+        @media (max-width: 768px) {
+            .nav-item.has-submenu .nav-submenu {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 12px;
+                margin: 2px 0 6px;
+                border-radius: 12px;
+                background: rgba(255,255,255,.04);
+                border: 1px solid rgba(255,255,255,.06);
+            }
+
+            .nav-item.has-submenu.open .nav-submenu {
+                display: flex;
+            }
+
+            .nav-submenu__link {
+                display: block;
+                padding: 10px 12px;
+                border-radius: 10px;
+                text-decoration: none;
+                color: var(--text-main);
+                background: rgba(255,255,255,.03);
+                border: 1px solid rgba(255,255,255,.06);
+            }
+
+            .nav-submenu__link:hover {
+                border-color: rgba(79,138,255,.4);
+                background: rgba(79,138,255,.12);
+            }
+        }
     </style>
 </head>
 
@@ -135,19 +168,19 @@
             </button>
 
             <a href="/" class="nav__link">Главная</a>
-            <div class="nav-item has-dropdown">
-                <div class="nav-item has-submenu">
-                    <a class="nav__link nav-parent" href="#">Информация</a>
-                    <div class="nav-submenu">
-                        <a class="nav-submenu__link" href="/pages/about.html">О нас</a>
-                        <a class="nav-submenu__link" href="/pages/obuchenie.html">Обучение</a>
-                        <a class="nav-submenu__link" href="/pages/document.html">Документация</a>
-                    </div>
+
+            <div class="nav-item has-submenu">
+                <a class="nav__link nav-parent" href="#">Информация</a>
+                <div class="nav-submenu">
+                    <a class="nav-submenu__link" href="/pages/about.html">О нас</a>
+                    <a class="nav-submenu__link" href="/pages/obuchenie.html">Обучение</a>
+                    <a class="nav-submenu__link" href="/pages/document.html">Документация</a>
                 </div>
             </div>
 
             <a href="/pages/catalog.html" class="nav__link">Каталог</a>
             <a href="/pages/news.html" class="nav__link">Новости</a>
+
             <div class="nav-item has-submenu">
                 <a class="nav__link nav-parent" href="/pages/modern.html">Модернизация</a>
                 <div class="nav-submenu">
@@ -155,6 +188,7 @@
                     <a class="nav-submenu__link" href="/pages/modern_dron.html">Дроны</a>
                 </div>
             </div>
+
             <a href="/pages/contacts.html" class="nav__link">Контакты</a>
             <a href="/pages/reg.html" class="nav__link reg_button">Регистрация</a>
             <a href="/pages/login.html" class="nav__link login_button">Войти</a>
@@ -200,7 +234,6 @@
                 </div>
             </div>
 
-
             <div class="system-filter" role="tablist" aria-label="Фильтр систем обучения">
                 <button class="system-filter__btn active" type="button" data-filter="all">Все</button>
                 <button class="system-filter__btn" type="button" data-filter="lms">LMS</button>
@@ -214,9 +247,7 @@
                 </div>
             </div>
 
-
             <div class="system-list" id="systemList">
-
 
                 <div class="training-center-card system-card" data-type="lms analytics" data-title="HSC Learn (LMS)">
                     <div class="training-center-card__content">
@@ -241,7 +272,7 @@
                             <span class="system-badge">🧩 SCORM/xAPI</span>
                         </div>
 
-                        <a href="#" class="training-center-card__link">
+                        <a style="margin-top: 10px" href="#" class="training-center-card__link">
                             <span>Читать подробнее</span>
                             <i>→</i>
                         </a>
@@ -296,7 +327,7 @@
                             <span class="system-badge">✅ Аттестация</span>
                         </div>
 
-                        <a href="#" class="training-center-card__link">
+                        <a style="margin-top: 10px" href="#" class="training-center-card__link">
                             <span>Читать подробнее</span>
                             <i>→</i>
                         </a>
@@ -351,7 +382,7 @@
                             <span class="system-badge">📈 Эффективность</span>
                         </div>
 
-                        <a href="#" class="training-center-card__link">
+                        <a style="margin-top: 10px" href="#" class="training-center-card__link">
                             <span>Читать подробнее</span>
                             <i>→</i>
                         </a>
@@ -407,7 +438,7 @@
                             <span class="system-badge">⏱️ Регламенты</span>
                         </div>
 
-                        <a href="#" class="training-center-card__link">
+                        <a style="margin-top: 10px" href="#" class="training-center-card__link">
                             <span>Читать подробнее</span>
                             <i>→</i>
                         </a>
@@ -535,100 +566,30 @@
 <script src="/styles/js/form.js"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // ===== БУРГЕР =====
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('mobileNav');
-        const overlay = document.getElementById('navOverlay');
-        const navClose = document.getElementById('navClose');
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('navOverlay');
+    const navClose = document.getElementById('navClose');
 
-        function closeMenu() {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-        }
+    function closeMenu() {
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+    }
 
-        if (burger && nav && overlay && navClose) {
-            burger.addEventListener('click', () => {
-                nav.classList.toggle('active');
-                overlay.classList.toggle('active');
-            });
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+    });
 
-            overlay.addEventListener('click', closeMenu);
-            navClose.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+    navClose.addEventListener('click', closeMenu);
 
-            nav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', closeMenu);
-            });
-        }
-
-        const viewButtons = document.querySelectorAll('.view-toggle__btn');
-        viewButtons.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                if (this.tagName.toLowerCase() === 'a') return; // ссылка как демо
-                viewButtons.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        const filterButtons = Array.from(document.querySelectorAll('.system-filter__btn'));
-        const cards = Array.from(document.querySelectorAll('.system-card'));
-        const searchInput = document.getElementById('systemSearch');
-
-        let activeFilter = 'all';
-        let searchTerm = '';
-
-        function applyFilter() {
-            const term = searchTerm.trim().toLowerCase();
-
-            cards.forEach(card => {
-                const types = (card.getAttribute('data-type') || '').split(/\s+/).filter(Boolean);
-                const title = (card.getAttribute('data-title') || '').toLowerCase();
-                const text = (card.textContent || '').toLowerCase();
-
-                const matchType = (activeFilter === 'all') ? true : types.includes(activeFilter);
-                const matchSearch = term ? (title.includes(term) || text.includes(term)) : true;
-
-                card.style.display = (matchType && matchSearch) ? '' : 'none';
-            });
-        }
-
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                activeFilter = btn.getAttribute('data-filter') || 'all';
-                applyFilter();
-            });
-        });
-
-        if (searchInput) {
-            searchInput.addEventListener('input', () => {
-                searchTerm = searchInput.value || '';
-                applyFilter();
-            });
-        }
-
-        applyFilter();
-
-        const consultModal = document.getElementById('consultModal');
-        if (consultModal) {
-            document.querySelectorAll('.js-open-consult').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    consultModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-
-            document.querySelectorAll('.js-close-consult').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    consultModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            });
-        }
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
     });
 </script>
+
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const mq = window.matchMedia('(max-width: 768px)');
