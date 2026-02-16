@@ -71,7 +71,6 @@
     <div class="nav-overlay" id="navOverlay"></div>
 </header>
 
-<body>
 
 <div class="container">
 
@@ -390,7 +389,43 @@
 
 
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mq = window.matchMedia('(max-width: 768px)');
 
+        function closeAllSubmenus(except = null) {
+            document.querySelectorAll('.nav-item.has-submenu.is-open').forEach(item => {
+                if (item !== except) item.classList.remove('is-open');
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!mq.matches) return;
+
+            const parentLink = e.target.closest('.nav-item.has-submenu > a.nav-parent');
+            if (!parentLink) return;
+
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+
+            const item = parentLink.closest('.nav-item.has-submenu');
+            const willOpen = !item.classList.contains('is-open');
+
+            closeAllSubmenus(item);
+            item.classList.toggle('is-open', willOpen);
+        }, true);
+
+
+        document.addEventListener('click', (e) => {
+            if (!mq.matches) return;
+            if (e.target.closest('.nav-item.has-submenu')) return;
+            closeAllSubmenus();
+        });
+
+        mq.addEventListener?.('change', () => closeAllSubmenus());
+    });
+</script>
 
 
 </body>
